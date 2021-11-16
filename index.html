@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- FIREBASE -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.10.0/firebase-app.min.js"
+        integrity="sha512-XNRpfd3CxEDrXcXWvht51k3l8G5cZhcY0kehFjUohBhgRDCozbdSaGz3w96WlDxAgiNZndKnpn1+4532FS3p3w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.10.0/firebase-auth.min.js"
+        integrity="sha512-GAEvFso2oksY5JFkHlrfLhZgAV6aL48qxnbxPnbKnNLeG/XsU/c0lh/g9gocZ2RtbRx6VDTqspPEy9ixWvbfzw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.10.0/firebase-firestore.min.js"
+        integrity="sha512-5mAQjqpXMGEvRH48JD3KJC750vTeD+83f1UxnRt1Ur6enn77FrK+MqIU0dkUn7judeBsjsv6xLHC//YFnRQVAw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.10.0/firebase-storage.min.js"
+        integrity="sha512-McmP/lKtqKf61PGCgpofj4nd0AcJ7rZ8HlZGocNta9YVAfXg6/8vJdkY+t+i2A74yoHX1uXGo/FIfwT0myMWHQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="module">
+
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAg_qY4RB7yRrZUZ8Tw6Zau9w2_Fb6t6VM",
+            authDomain: "prueba-5ce86.firebaseapp.com",
+            projectId: "prueba-5ce86",
+            storageBucket: "gs://prueba-5ce86.appspot.com",
+            messagingSenderId: "387233933785",
+            appId: "1:387233933785:web:5d9c4e25eb97b5401491c8"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+    </script>
+    <img src="" id=img width="300" alt="">
+    <link rel="stylesheet" href="stylesheets/estilo.css">
+    <script src="LIB/jquery-3.6.0.js" type="module"></script>
+    <script src="JS/script.js" type="module"></script>
+</head>
+
+
+<body>
+
+
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <span class="navbar-brand" id=nombreUsuario></span>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                        <a class="dropdown-item" href="#">Action 1</a>
+                        <a class="dropdown-item" href="#">Action 2</a>
+                    </div>
+                </li>
+            </ul>
+            <div id=botones></div>
+        </div>
+    </nav>
+
+
+
+    <div class="container">
+
+        <form action="" id=formulario>
+            <input type="text" id="inpUsuario" placeholder="Escriba el nombre del usuario">
+            <br>
+            <input type="button" class="btn btn-primary" id=buscar value="Buscar">
+            <br>
+
+        </form>
+
+
+    </div>
+
+    <div class="ocultar" id=solicitud>
+        <h1 id=titInv>Invitacion de </h1>
+        <button id=solAcep class="btn btn-outline-success">Aceptar</button>
+        <button id=solDen class="btn btn-outline-danger">Denegar</button>
+    </div>
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
