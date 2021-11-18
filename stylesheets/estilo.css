@@ -1,29 +1,63 @@
 /* line 1, ../sass/estilo.scss */
-nav {
-  margin-bottom: 40px;
+body {
+  background-image: url("../IMG/pasiaje.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
-/* line 5, ../sass/estilo.scss */
+/* line 8, ../sass/estilo.scss */
+nav {
+  margin-bottom: 10px;
+  position: fixed;
+  top: -25px;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.497), #000000);
+  color: white;
+}
+
+/* line 15, ../sass/estilo.scss */
+.nav-link {
+  transition: 0.3s;
+}
+/* line 17, ../sass/estilo.scss */
+.nav-link:hover {
+  text-shadow: 0 5px 10px black;
+  transform: scale(110%);
+}
+
+/* line 23, ../sass/estilo.scss */
+.navbar-brand {
+  text-shadow: 0 5px 10px rgba(0, 0, 0, 0.565);
+  font-weight: bold;
+}
+
+/* line 28, ../sass/estilo.scss */
 .ocultar {
   display: none;
 }
 
-/* line 9, ../sass/estilo.scss */
+/* line 32, ../sass/estilo.scss */
 .container {
-  background-color: rgba(0, 0, 0, 0.585);
-  height: 80vh;
+  background-image: radial-gradient(rgba(57, 109, 193, 0.599), #000000);
+  height: 85vh;
+  border-radius: 10px;
+  padding: 20px;
+  overflow-y: auto;
 }
-/* line 13, ../sass/estilo.scss */
+/* line 39, ../sass/estilo.scss */
 .container > form {
   text-align: center;
   padding: 30px;
 }
-/* line 16, ../sass/estilo.scss */
+/* line 42, ../sass/estilo.scss */
 .container > form > #inpUsuario {
   width: 70%;
-  font-size: 15px;
+  font-size: 20px;
+  padding: 10px;
+  border: none;
 }
-/* line 20, ../sass/estilo.scss */
+/* line 48, ../sass/estilo.scss */
 .container > form > #buscar {
   padding: 10px;
   margin-top: 2vh;
@@ -34,7 +68,7 @@ nav {
   border-color: black;
 }
 
-/* line 32, ../sass/estilo.scss */
+/* line 60, ../sass/estilo.scss */
 #solicitud {
   text-align: center;
   position: absolute !important;
@@ -48,16 +82,115 @@ nav {
   border: 2px solid black;
   border-radius: 10px;
 }
-/* line 44, ../sass/estilo.scss */
+/* line 72, ../sass/estilo.scss */
 #solicitud > h1 {
   color: white;
   text-shadow: 0 0 10px black;
 }
-/* line 48, ../sass/estilo.scss */
+/* line 76, ../sass/estilo.scss */
 #solicitud > button {
   padding-left: 20px;
   padding-right: 20px;
   margin-top: 30px;
   margin-left: 20px;
   margin-right: 20px;
+}
+
+/* line 86, ../sass/estilo.scss */
+.imgJuego {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.361);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+/* line 99, ../sass/estilo.scss */
+.imgJuego:hover {
+  transform: scale(110%);
+}
+
+/* line 104, ../sass/estilo.scss */
+.quitado {
+  background-color: rgba(255, 0, 0, 0.544);
+}
+
+/* line 107, ../sass/estilo.scss */
+.seleccionado {
+  background-color: rgba(0, 128, 0, 0.462);
+}
+
+/* line 111, ../sass/estilo.scss */
+.adivinado {
+  background-color: #ff5c19;
+}
+
+/* line 115, ../sass/estilo.scss */
+#imagenes {
+  text-align: center;
+}
+
+/* line 119, ../sass/estilo.scss */
+#datos {
+  text-align: center;
+  margin-top: 20px;
+}
+/* line 123, ../sass/estilo.scss */
+#datos > #mipersonaje {
+  width: 170px;
+  height: 170px;
+  border: 2px groove white;
+  background-image: radial-gradient(#357593, #1b3e4e);
+  border-radius: 10px;
+  float: right;
+  margin-right: 40px;
+}
+/* line 133, ../sass/estilo.scss */
+#datos > #aceptar,
+#datos #adivinar {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 120%;
+  font-weight: bold;
+  color: white;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  outline: none;
+  width: 30%;
+  box-shadow: 0 0 10px black;
+  text-shadow: 0 0 10px black;
+  border-radius: 5px;
+  padding: 5px 20px 5px 20px;
+  transition: 0.4s;
+}
+/* line 149, ../sass/estilo.scss */
+#datos > #aceptar:hover,
+#datos #adivinar:hover {
+  transform: scale(110%);
+  border-color: black;
+  box-shadow: 0 5px 15px black, inset 0 0 10px black;
+}
+/* line 156, ../sass/estilo.scss */
+#datos > #aceptar {
+  margin-left: 30px;
+  background-image: radial-gradient(#357593, #1b3e4e);
+  border: 1px solid #1b3e4e;
+}
+/* line 161, ../sass/estilo.scss */
+#datos > #adivinar {
+  margin-left: 30px;
+  background-image: radial-gradient(#fd8b21, #ff5c19);
+  border: 1px solid #1b3e4e;
+}
+
+/* line 168, ../sass/estilo.scss */
+#turno {
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 50px;
 }

@@ -52,9 +52,7 @@
 
 
 <body>
-
-
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <nav class="navbar navbar-expand-sm navbar-dark">
         <span class="navbar-brand" id=nombreUsuario></span>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
             aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,18 +61,7 @@
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownId">
-                        <a class="dropdown-item" href="#">Action 1</a>
-                        <a class="dropdown-item" href="#">Action 2</a>
-                    </div>
+                    <a class="nav-link" id=salir href="#">Salir de Partida</a>
                 </li>
             </ul>
             <div id=botones></div>
@@ -85,19 +72,26 @@
 
     <div class="container">
 
-        <form action="" id=formulario>
+        <form action="" class="ocultar" id=formulario>
             <input type="text" id="inpUsuario" placeholder="Escriba el nombre del usuario">
             <br>
             <input type="button" class="btn btn-primary" id=buscar value="Buscar">
             <br>
 
         </form>
-
-
+        <div id=secJuego>
+            <h1 id=turno></h1>
+            <div id=imagenes> </div>
+            <div id=datos>
+                <button class="ocultar" id=adivinar>ADIVINAR</button>
+                <button class="ocultar" id=aceptar>ACEPTAR</button>
+                <img class="ocultar" draggable="false" id=mipersonaje>
+            </div>
+        </div>
     </div>
 
     <div class="ocultar" id=solicitud>
-        <h1 id=titInv>Invitacion de </h1>
+        <h1 id=titInv></h1>
         <button id=solAcep class="btn btn-outline-success">Aceptar</button>
         <button id=solDen class="btn btn-outline-danger">Denegar</button>
     </div>
