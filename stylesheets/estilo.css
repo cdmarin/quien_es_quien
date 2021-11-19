@@ -261,9 +261,11 @@ nav {
 #textCambio {
   letter-spacing: 5px;
   color: white;
+  text-shadow: 0 0 10px black;
+  font-weight: bold;
 }
 
-/* line 236, ../sass/estilo.scss */
+/* line 238, ../sass/estilo.scss */
 #divPregunta {
   margin-bottom: 40px;
   box-shadow: inset 0 0 10px black, 0 0 10px black;
@@ -272,19 +274,19 @@ nav {
   padding: 10px;
   padding-bottom: 20px;
 }
-/* line 243, ../sass/estilo.scss */
+/* line 245, ../sass/estilo.scss */
 #divPregunta > .labelPreg {
   cursor: pointer;
   text-align: left;
   width: 70%;
 }
-/* line 247, ../sass/estilo.scss */
+/* line 249, ../sass/estilo.scss */
 #divPregunta > .labelPreg > span {
   color: white;
   font-size: 20px;
   user-select: none;
 }
-/* line 252, ../sass/estilo.scss */
+/* line 254, ../sass/estilo.scss */
 #divPregunta > .labelPreg #pregunta {
   width: 100%;
   border-radius: 5px;
@@ -297,7 +299,7 @@ nav {
   outline: none;
   box-shadow: 0 5px 10px black;
 }
-/* line 266, ../sass/estilo.scss */
+/* line 268, ../sass/estilo.scss */
 #divPregunta #envPreg {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 120%;
@@ -314,29 +316,34 @@ nav {
   padding: 5px 20px 5px 20px;
   transition: 0.4s;
 }
-/* line 282, ../sass/estilo.scss */
+/* line 284, ../sass/estilo.scss */
 #divPregunta #envPreg:hover {
   transform: scale(110%);
   box-shadow: 0 0 10px black, inset 0 0 30px black;
 }
 
-/* line 290, ../sass/estilo.scss */
+/* line 292, ../sass/estilo.scss */
 #divRespuesta {
   margin-bottom: 70px;
+  box-shadow: inset 0 0 10px black, 0 0 10px black;
+  background-color: rgba(0, 0, 0, 0.422);
+  border-radius: 5px;
+  padding: 10px;
+  padding-bottom: 20px;
 }
-/* line 293, ../sass/estilo.scss */
+/* line 300, ../sass/estilo.scss */
 #divRespuesta > .labelResp {
   cursor: pointer;
   text-align: left;
   width: 70%;
 }
-/* line 297, ../sass/estilo.scss */
+/* line 304, ../sass/estilo.scss */
 #divRespuesta > .labelResp > span {
   color: white;
   font-size: 20px;
   user-select: none;
 }
-/* line 303, ../sass/estilo.scss */
+/* line 310, ../sass/estilo.scss */
 #divRespuesta > .labelResp #respuesta {
   width: 100%;
   text-align: center;
@@ -345,14 +352,45 @@ nav {
   border: none;
   background-color: rgba(255, 255, 255, 0.768);
 }
-/* line 310, ../sass/estilo.scss */
+/* line 317, ../sass/estilo.scss */
 #divRespuesta > .labelResp #respuesta > option {
   padding: 10px;
 }
-/* line 315, ../sass/estilo.scss */
+/* line 322, ../sass/estilo.scss */
 #divRespuesta > #envResp {
   border: 2px groove;
   border-radius: 10px;
   margin-top: 40px;
   width: 30%;
+}
+
+/* line 330, ../sass/estilo.scss */
+#victoria {
+  position: absolute;
+  text-align: center;
+  background-image: radial-gradient(rgba(76, 0, 0, 0.83), #000000);
+  top: 20vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 60vh;
+  width: 80vw;
+  padding: 20px;
+  border-radius: 10px;
+}
+/* line 343, ../sass/estilo.scss */
+#victoria > h1 {
+  font-size: 2vw;
+  color: white;
+}
+/* line 347, ../sass/estilo.scss */
+#victoria > div {
+  margin: auto;
+  border-radius: 5px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 300px;
+  height: 300px;
+  transition: 0.4s;
 }
