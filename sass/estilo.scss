@@ -330,7 +330,7 @@ nav {
 #victoria {
     position: absolute;
     text-align: center;
-    background-image: radial-gradient(rgba(76, 0, 0, 0.83), rgb(0, 0, 0));
+    background-image: radial-gradient(rgba(0, 6, 44, 0.83), rgb(0, 0, 0));
     top: 20vh;
     left: 0;
     right: 0;
@@ -339,10 +339,15 @@ nav {
     width: 80vw;
     padding: 20px;
     border-radius: 10px;
-
+    border: 2px solid white;
+    box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.789), inset 0 0 100px rgba(255, 255, 255, 0.354);
     > h1 {
-        font-size: 2vw;
-        color: white;
+        font-size: 3vw;
+        font-weight: bold;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        -webkit-text-fill-color: black;
+        -webkit-text-stroke: 0.5px white;
     }
     > div {
         margin: auto;
@@ -350,7 +355,7 @@ nav {
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-        // background-image: url("https://firebasestorage.googleapis.com/v0/b/prueba-5ce86.appspot.com/o/bowser.png?alt=media&token=102d4ded-2310-4b02-b5f1-b0ba8eda5071");
+        background-image: url("https://firebasestorage.googleapis.com/v0/b/prueba-5ce86.appspot.com/o/bowser.png?alt=media&token=102d4ded-2310-4b02-b5f1-b0ba8eda5071");
         width: 300px;
         height: 300px;
         transition: 0.4s;

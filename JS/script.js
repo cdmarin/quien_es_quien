@@ -173,7 +173,7 @@ const buscarUsuario = (user, nombre) => {
 
                 localStorage.setItem("numSala", numSala);
                 localStorage.setItem("numJugador", 0);
-                console.log("buscado y creado");
+                console.log("buscado y creado " + numSala);
                 cargarArchivos();
             }
         })
@@ -240,21 +240,27 @@ const cargarArchivos = () => {
 
             jugada.onSnapshot((result) => {
                 if (result.exists) {
+
                     // COMPROBAMOS QUE LOS PERSONAJES ESTEN ESTABLECIDOS
                     if (!result.data().miPersonaje.includes("")) {
                         $("#turno").removeClass("ocultar");
 
                         // SI NADIE HA GANADO
                         if (result.data().victoria == undefined) {
+                            if (result.data().pregunta == undefined && result.data().respuesta == undefined) {
+                                $("#textCambio").text("");
+                            }
 
                             // SI ES MI TURNO 
                             if (result.data().turno == localStorage.getItem("numJugador")) {
                                 $("#turno").text("ES TU TURNO");
                                 $("#aceptar").removeClass("ocultar")
                                 $("#adivinar").removeClass("ocultar")
-
                                 $("#divRespuesta").addClass("ocultar");
 
+                                if (result.data().pregunta == undefined) {
+                                    $("#divPregunta").removeClass("ocultar");
+                                }
 
                                 if (result.data().respuesta != undefined) {
                                     $("#textCambio").text("Respuesta: " + result.data().respuesta);
@@ -267,7 +273,7 @@ const cargarArchivos = () => {
                                 $("#adivinar").addClass("ocultar")
                                 $("#divPregunta").addClass("ocultar");
 
-                                if (result.data().pregunta != undefined && result.data().pregunta.length > 0) {
+                                if (result.data().pregunta != undefined && result.data().pregunta.length > 0 && result.data().respuesta == undefined) {
                                     $("#divRespuesta").removeClass("ocultar");
                                     $("#textCambio").text(result.data().pregunta);
                                 }
@@ -280,12 +286,13 @@ const cargarArchivos = () => {
                             $("#victoria").removeClass("ocultar");
                             firebase.firestore().collection("salas").doc("sala-" + localStorage.getItem("numSala"))
                                 .get().then((nombre) => {
-                                    $("#titFin").text("LA VICTORIA ES PARA " + nombre.data().jugadores[result.data().victoria]);
+                                    $("#titFin").text("LA VICTORIA ES PARA  " + nombre.data().jugadores[result.data().victoria]);
 
+                                    var url = $("#" + result.data().miPersonaje[result.data().victoria]).css("background-image")
+                                    $("#imgFin").css("background-image", url);
                                 })
 
-                            var url = $("#" + result.data().miPersonaje[localStorage.getItem("numJugador")]).css("background-image")
-                            $("#imgFin").css("background-image", url);
+                           
                             setTimeout(() => {
                                 $("#victoria").addClass("ocultar");
                                 resetVariables();
@@ -306,8 +313,6 @@ const cargarArchivos = () => {
                 e.preventDefault();
 
                 var jugada = firebase.firestore().collection("salas").doc("jugadas-" + localStorage.getItem("numSala"))
-                $("#textCambio").text("");
-
                 jugada.update({
                     respuesta: firebase.firestore.FieldValue.delete(),
                     pregunta: firebase.firestore.FieldValue.delete()
@@ -417,14 +422,15 @@ const cargarArchivos = () => {
                 console.log("vaaaal.... " + $("#respuesta").val());
                 $("#textCambio").text("Espera al jugador...");
                 $("#divRespuesta").addClass("ocultar");
-                console.log("respondí");
+
+                console.log("respondí " + document.getElementById("divRespuesta").className);
                 var jugada = firebase.firestore().collection("salas").doc("jugadas-" + localStorage.getItem("numSala"))
                 jugada.update({
                     respuesta: $("#respuesta").val()
                 })
 
                 e.preventDefault();
-
+                return false;
             })
         }
         // SI NO HAY UNA PARTIDA ACTIVA
