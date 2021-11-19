@@ -1,34 +1,13 @@
 const auth = firebase.auth();
 var adivinar = false;
-var modo = true;
-
+var temp;
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         $("#botones").append("<button class='btn btn-outline-danger' id='btnCerrarSession'>Cerrar sesion</button>");
         $("#nombreUsuario").text("Bienvenido " + user.displayName);
         cerrarSesion();
         agregarJugador(user);
-        $("#modosin").click(() => {
-            modo = false;
 
-            $("#divRespuesta").addClass("ocultar");
-            $("#divPregunta").addClass("ocultar");
-        })
-        $("#modocon").click(() => {
-            modo = true;
-            firebase.firestore().collection("salas").doc("jugadas-" + localStorage.getItem("numSala"))
-                .get().then((result) => {
-                    if (result.data().turno == localStorage.getItem("numJugador")) {
-                        $("#divPregunta").removeClass("ocultar");
-
-                    }
-                    else {
-                        if (result.data().respuesta != undefined) {
-                            $("#divRespuesta").removeClass("ocultar");
-                        }
-                    }
-                })
-        })
         cargarArchivos();
         // EVENTO DE BUSCAR JUGADOR
         $("#buscar").click((e) => {
@@ -45,6 +24,7 @@ firebase.auth().onAuthStateChanged((user) => {
         // EVENTO DE SALIR DE PARTIDA
         $("#salir").click(() => {
             resetVariables();
+            return false;
         })
 
     } else {
@@ -52,7 +32,7 @@ firebase.auth().onAuthStateChanged((user) => {
         $("#formulario").addClass("ocultar");
         $("#secJuego").children("*").addBack().addClass("ocultar");
         $("#imagenes").empty();
-        $("#botones").append("<button class='btn btn-outline-success' id='btnAcceder'>Acceder</button >");
+        $("#botAcc").append("<button class='btn btn-outline-success' id='btnAcceder'>Acceder</button >");
         $("#nombreUsuario").text("Inicie Sesion")
         iniciarSesion();
     }
@@ -71,7 +51,8 @@ const iniciarSesion = () => {
     });
 
     $("#formulario").addClass("ocultar");
-
+    $("#salir").addClass("ocultar");
+    $("#insesion").removeClass("ocultar");
 };
 
 const cerrarSesion = () => {
@@ -83,6 +64,8 @@ const cerrarSesion = () => {
 
     });
     $("#formulario").removeClass("ocultar");
+    $("#salir").addClass("ocultar");
+    $("#insesion").addClass("ocultar");
 
 }
 
@@ -123,10 +106,15 @@ const agregarJugador = (user) => {
                                 arrayJugadores.push(user.displayName);
                                 localStorage.setItem("numSala", sala);
                                 localStorage.setItem("numJugador", 1);
-                                colecSalas.doc("sala-" + sala).update({
-                                    jugadores: arrayJugadores
-                                })
-                                console.log("aceptado y creado");
+                                console.log("no");
+                                if (array.exists) {
+
+                                    colecSalas.doc("sala-" + sala).update({
+                                        jugadores: arrayJugadores
+                                    })
+                                }
+
+                                console.log("si");
 
                                 cargarArchivos();
                             })
@@ -138,7 +126,9 @@ const agregarJugador = (user) => {
                         $("#solicitud").addClass("ocultar");
                         colecSalas.doc("sala-" + sala).delete();
                         colecSalas.doc("jugadas-" + sala).delete();
-
+                        coleccion.doc(user.displayName).update({
+                            solicitud: firebase.firestore.FieldValue.delete()
+                        })
                     })
                 })
 
@@ -172,9 +162,15 @@ const buscarUsuario = (user, nombre) => {
 
                 localStorage.setItem("numSala", numSala);
                 localStorage.setItem("numJugador", 0);
-                console.log("buscado y creado " + numSala);
                 cargarArchivos();
             }
+
+            setTimeout(() => {
+                if ($("#imagenes").children().length <= 2) {
+                    resetVariables();
+                    alert(nombre + " no ha aceptado la solicitud ");
+                }
+            }, 7000);
         })
 }
 
@@ -239,7 +235,6 @@ const cargarArchivos = () => {
 
             jugada.onSnapshot((result) => {
                 if (result.exists) {
-
                     // COMPROBAMOS QUE LOS PERSONAJES ESTEN ESTABLECIDOS
                     if (!result.data().miPersonaje.includes("")) {
                         $("#turno").removeClass("ocultar");
@@ -358,10 +353,7 @@ const cargarArchivos = () => {
                                     turno: turno
                                 })
                             }
-                            else {
-                                console.log("No es tu turno");
 
-                            }
                         }
                     }
                     else {
@@ -395,13 +387,11 @@ const cargarArchivos = () => {
             // BOTON DE ENVIAR PREGUNTA
             $("#envPreg").click((e) => {
 
-                console.log("a ver-- " + ($("#pregunta").val().length > 0));
 
                 if ($("#pregunta").val().length > 0) {
                     $("#textCambio").text("Espera la respuesta del jugador...");
                     $("#divPregunta").addClass("ocultar");
 
-                    console.log("a ver");
 
                     var jugada = firebase.firestore().collection("salas").doc("jugadas-" + localStorage.getItem("numSala"))
                     jugada.update({
@@ -419,11 +409,9 @@ const cargarArchivos = () => {
 
             // BOTON DE ENVIAR RESPUESTA
             $("#envResp").click((e) => {
-                console.log("vaaaal.... " + $("#respuesta").val());
                 $("#textCambio").text("Espera al jugador...");
                 $("#divRespuesta").addClass("ocultar");
 
-                console.log("respondí " + document.getElementById("divRespuesta").className);
                 var jugada = firebase.firestore().collection("salas").doc("jugadas-" + localStorage.getItem("numSala"))
                 jugada.update({
                     respuesta: $("#respuesta").val()
@@ -441,18 +429,19 @@ const cargarArchivos = () => {
         }
 
         if (!result.exists) {
+            console.log("aqui");
             resetVariables();
         }
     })
 
 }
 
-// MARCA EN ROJO LOS PERSONAJES REMARCADOS
+// MARCA EN ROJO LOS PERSONAJES REMARCADOS EN ANTERIORES RONDAS
 function marcarRojo(conexion) {
     conexion.then((result) => {
         if (result.exists) {
             var array = result.data().quitadosPers[localStorage.getItem("numJugador")];
-            if (array.length > 0) {
+            if (array != undefined && array.length > 0) {
                 array = array.split("-");
 
                 for (let i = 0; i < array.length; i++) {

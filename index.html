@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Quien es quien</title>
+    <title>¿Quien es quien?</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -53,6 +53,7 @@
 
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark">
+        <img class="logonav" src="IMG/silueta.png" alt="">
         <span class="navbar-brand" id=nombreUsuario></span>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
             aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,24 +62,8 @@
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" id=salir href="#">Salir de Partida</a>
+                    <a class="nav-link" id=salir>Salir de Partida</a>
                 </li>
-
-                <!-- DROPDOWN -->
-                <li class="nav-item">
-                    <div class="dropdown">
-                        <a class=" btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Cambiar Modo
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" id=modosin href="#">Sin teclado</a>
-                            <a class="dropdown-item" id=modocon href="#">Con teclado </a>
-                        </div>
-                    </div>
-                </li>
-
-
             </ul>
             <div id=botones></div>
         </div>
@@ -86,7 +71,14 @@
 
 
 
-    <div class="container">
+    <div class="contenedor">
+
+        <div class="ocultar" id=insesion>
+            <h1>INICIE SESION ANTES DE COMENZAR A JUGAR</h1>
+            <div id=botAcc></div>
+            <img src="IMG/siluetaCuerpo.png" alt="">
+        </div>
+
 
         <form action="" class="ocultar" id=formulario>
             <h1 class="titulo">Escriba el nombre del usuario al que desee mandarle una solicitud</h1>
@@ -151,7 +143,7 @@
 
     <div class="ocultar" id=victoria>
         <h1 id=titFin></h1>
-        <div id=imgFin  draggable="false"></div>
+        <div id=imgFin draggable="false"></div>
     </div>
 
 
