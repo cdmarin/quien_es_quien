@@ -1,7 +1,7 @@
 const auth = firebase.auth();
 var miPersonaje = false;
 var adivinar = false;
-
+var modo = true;
 
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -9,6 +9,27 @@ firebase.auth().onAuthStateChanged((user) => {
         $("#nombreUsuario").text("Bienvenido " + user.displayName);
         cerrarSesion();
         agregarJugador(user);
+        $("#modosin").click(() => {
+            modo = false;
+
+            $("#divRespuesta").addClass("ocultar");
+            $("#divPregunta").addClass("ocultar");
+        })
+        $("#modocon").click(() => {
+            modo = true;
+            firebase.firestore().collection("salas").doc("jugadas-" + localStorage.getItem("numSala"))
+                .get().then((result) => {
+                    if (result.data().turno == localStorage.getItem("numJugador")) {
+                        $("#divPregunta").removeClass("ocultar");
+
+                    }
+                    else {
+                        if (result.data().respuesta != undefined) {
+                            $("#divRespuesta").removeClass("ocultar");
+                        }
+                    }
+                })
+        })
         cargarArchivos();
         // EVENTO DE BUSCAR JUGADOR
         $("#buscar").click((e) => {
@@ -158,7 +179,15 @@ const buscarUsuario = (user, nombre) => {
         })
 }
 
-/****************************************************************  SCRIPT DE PARTIDA ***********************************************/
+/*
+
+
+
+***************************************************************  SCRIPT DE PARTIDA **********************************************
+
+
+
+*/
 
 const cargarArchivos = () => {
     firebase.firestore().collection("salas").doc("sala-" + localStorage.getItem("numSala")).onSnapshot((result) => {
@@ -171,8 +200,10 @@ const cargarArchivos = () => {
         if (cond) {
             $("#formulario").addClass("ocultar");
             $("#secJuego").find("*").addBack().removeClass("ocultar");
-            $("#turno").addClass("ocultar");
             $("#divPregunta").addClass("ocultar");
+            $("#divRespuesta").addClass("ocultar");
+            $("#adivinar").addClass("ocultar");
+
             // CARGA LAS IMAGENES EN LA PANTALLA
             firebase.storage().ref().child("").listAll()
                 .then(async (result) => {
@@ -206,23 +237,48 @@ const cargarArchivos = () => {
             firebase.firestore().collection("salas").doc("jugadas-" + localStorage.getItem("numSala"))
                 .onSnapshot((result) => {
                     if (result.exists) {
-                        // COMPROBAMOS QUE LOS PERSONAJES SE ESTEN ESTABLECIDOS
+                        // COMPROBAMOS QUE LOS PERSONAJES ESTEN ESTABLECIDOS
                         if (!result.data().miPersonaje.includes("")) {
                             $("#turno").removeClass("ocultar");
 
                             // SI NADIE HA GANADO
                             if (result.data().victoria == undefined) {
+
+                                // SI ES MI TURNO 
                                 if (result.data().turno == localStorage.getItem("numJugador")) {
                                     $("#turno").text("ES TU TURNO");
-                                    $("#divPregunta").removeClass("ocultar");
+                                    $("#aceptar").removeClass("ocultar")
+                                    $("#adivinar").removeClass("ocultar")
+                                    if (modo) {
+                                        $("#divPregunta").removeClass("ocultar");
+                                    }
+                                    $("#divRespuesta").addClass("ocultar");
+
+
+                                    if (result.data().respuesta != undefined) {
+                                        $("#textCambio").text("Respuesta: " + result.data().respuesta);
+                                    }
+                                    else {
+                                        $("#textCambio").text("");
+                                    }
                                 }
+                                // SI NO ES MI TURNO 
                                 else {
                                     $("#turno").text("ES EL TURNO DEL RIVAL");
+                                    $("#aceptar").addClass("ocultar")
+                                    $("#adivinar").addClass("ocultar")
                                     $("#divPregunta").addClass("ocultar");
+
+                                    if (result.data().pregunta != undefined && result.data().pregunta.length > 0) {
+                                        if (modo) {
+                                            $("#divRespuesta").removeClass("ocultar");
+                                        }
+                                        $("#textCambio").text(result.data().pregunta);
+                                    }
                                 }
                             }
+                            // EN EL CASO DE QUE ALGUIEN HAYA GANADO SE MUESTRA EL GANADOR Y SE TERMINA
                             else {
-                                console.log(result.data().victoria + " --- " + localStorage.getItem("numJugador"));
                                 if (result.data().victoria == localStorage.getItem("numJugador")) {
                                     console.log("has ganado");
                                 }
@@ -236,6 +292,10 @@ const cargarArchivos = () => {
                             }
 
                         }
+                        else {
+                            $("#turno").text("RONDA DE ELECCION DE PERSONAJE");
+
+                        }
 
                     }
                 })
@@ -243,6 +303,12 @@ const cargarArchivos = () => {
             // EVENTO DEL BOTON DE ACEPTAR
             $("#aceptar").click(() => {
                 var jugada = firebase.firestore().collection("salas").doc("jugadas-" + localStorage.getItem("numSala"))
+                $("#textCambio").text("");
+
+                jugada.update({
+                    respuesta: firebase.firestore.FieldValue.delete(),
+                    pregunta: firebase.firestore.FieldValue.delete()
+                })
 
                 jugada.get().then((result) => {
                     if (!adivinar) {
@@ -314,6 +380,35 @@ const cargarArchivos = () => {
                             }
                         }
                     })
+            })
+
+            // BOTON DE ENVIAR PREGUNTA
+            $("#envPreg").click(() => {
+                var jugada = firebase.firestore().collection("salas").doc("jugadas-" + localStorage.getItem("numSala"))
+
+                if ($("#pregunta").val().length > 0) {
+                    jugada.update({
+                        pregunta: $("#pregunta").val()
+                    })
+
+                    $("#textCambio").text("Espera la respuesta del jugador...");
+
+                }
+                else {
+                    $("#pregunta").trigger("click");
+                }
+            })
+
+            // BOTON DE ENVIAR RESPUESTA
+            $("#envResp").click(() => {
+                var jugada = firebase.firestore().collection("salas").doc("jugadas-" + localStorage.getItem("numSala"))
+                console.log($("#respuesta").val());
+                jugada.update({
+                    respuesta: $("#respuesta").val()
+                })
+                $("#textCambio").text("Espera al jugador...");
+                $("#divRespuesta").addClass("ocultar");
+
             })
         }
         // SI NO HAY UNA PARTIDA ACTIVA
@@ -401,13 +496,7 @@ function marcarImagen() {
 
                 }
                 else {
-                    if ($(this).attr("class").includes("quitado")) {
-                        $(this).removeClass("quitado");
-                    }
-                    else {
-                        $(this).addClass("quitado");
-                    }
-
+                    $(this).toggleClass("quitado");
                 }
             }
             else {

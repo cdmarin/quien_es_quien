@@ -63,6 +63,22 @@
                 <li class="nav-item active">
                     <a class="nav-link" id=salir href="#">Salir de Partida</a>
                 </li>
+
+                <!-- DROPDOWN -->
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <a class=" btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Cambiar Modo
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" id=modosin href="#">Sin teclado</a>
+                            <a class="dropdown-item" id=modocon href="#">Con teclado </a>
+                        </div>
+                    </div>
+                </li>
+
+
             </ul>
             <div id=botones></div>
         </div>
@@ -79,12 +95,14 @@
             <br>
 
         </form>
-        <div id=secJuego>
+
+        <div id=secJuego class="ocultar">
             <h1 id=turno></h1>
             <div id=imagenes> </div>
 
             <div id=datos>
-                <h2 id=pregRecibida>Eres rojo?</h2>
+                <!-- TEXTO DE PREGUNTA Y RESPUESTA DEPENDIENDO DEL TURNO -->
+                <h2 id=textCambio></h2>
 
                 <!-- SECCION DE PREGUNTA -->
                 <div id=divPregunta>
@@ -93,7 +111,7 @@
                         <input id=pregunta type="text" list=opcionesPreg>
                     </label>
                     <br>
-                    <button>Enviar Pregunta</button>
+                    <button id=envPreg>ENVIAR PREGUNTA</button>
                     <br>
                 </div>
 
@@ -110,6 +128,8 @@
                             <option value="No se">No se</option>
                         </select>
                     </label>
+                    <br>
+                    <button id=envResp>ENVIAR RESPUESTA</button>
                     <br>
                 </div>
 
@@ -129,7 +149,7 @@
 
 
     <datalist id=opcionesPreg>
-        <option value="¿Que color predomina en tu vestuario?"></option>
+        <option value="¿Predomina el rojo en tu vestuario?"></option>
     </datalist>
 
 
