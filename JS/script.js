@@ -1,5 +1,4 @@
 const auth = firebase.auth();
-var miPersonaje = false;
 var adivinar = false;
 var modo = true;
 
@@ -249,6 +248,7 @@ const cargarArchivos = () => {
                         if (result.data().victoria == undefined) {
                             if (result.data().pregunta == undefined && result.data().respuesta == undefined) {
                                 $("#textCambio").text("");
+                                $("#pregunta").text("");
                             }
 
                             // SI ES MI TURNO 
@@ -292,11 +292,11 @@ const cargarArchivos = () => {
                                     $("#imgFin").css("background-image", url);
                                 })
 
-                           
+
                             setTimeout(() => {
                                 $("#victoria").addClass("ocultar");
                                 resetVariables();
-                            }, 5000);
+                            }, 7000);
                         }
 
                     }
@@ -374,7 +374,6 @@ const cargarArchivos = () => {
             })
 
             $("#adivinar").click((e) => {
-                e.preventDefault();
                 firebase.firestore().collection("salas").doc("jugadas-" + localStorage.getItem("numSala"))
                     .get().then((result) => {
                         if (!result.data().miPersonaje.includes("")) {
@@ -389,7 +388,8 @@ const cargarArchivos = () => {
                             }
                         }
                     })
-
+                e.preventDefault();
+                return false;
             })
 
             // BOTON DE ENVIAR PREGUNTA
@@ -542,10 +542,10 @@ function resetVariables() {
         firebase.firestore().collection("salas").doc("sala-" + localStorage.getItem("numSala")).delete();
         firebase.firestore().collection("salas").doc("jugadas-" + localStorage.getItem("numSala")).delete();
     }
-    miPersonaje = false;
-    $("#mipersonaje").removeAttr("src");
+    $("#mipersonaje").css("background-image", "");
     $("textCambio").text("");
     localStorage.clear();
     adivinar = false;
+    $("#adivinar").removeClass("clikado");
 }
 
