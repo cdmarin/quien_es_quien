@@ -1,9 +1,25 @@
+@import "variables.scss";
+::-webkit-scrollbar-track {
+    -webkit-border-before: 1px solid white;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.422), rgba(255, 255, 255, 0.734));
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
 body {
     background-image: url("../IMG/pasiaje.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    font-family: titulos;
 }
 nav {
     margin-bottom: 10px;
@@ -57,9 +73,11 @@ nav {
         text-align: center;
         padding: 30px;
         > #inpUsuario {
+            box-shadow: inset 0 0 10px black;
             width: 70%;
             font-size: 20px;
-            padding: 10px;
+            padding: 15px;
+            margin: 20px;
             border: none;
         }
         > #buscar {
@@ -104,14 +122,13 @@ nav {
     width: 100px;
     height: 100px;
     border-radius: 10px;
-    padding: 10px;
     background-color: rgba(255, 255, 255, 0.361);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     margin: 10px;
     cursor: pointer;
-    transition: 0.2s;
+    transition: 0.3s;
 
     &:hover {
         transform: scale(130%);
@@ -134,11 +151,11 @@ nav {
     transform: scale(110%);
 }
 
-#turno {
+.titulo {
     text-align: center;
-    text-shadow: 0 0 10px black;
+    text-shadow: 0 0 15px black;
     color: white;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 20px;
     letter-spacing: 5px;
 }
@@ -148,6 +165,9 @@ nav {
     text-align: center;
     margin-bottom: 40px;
     height: 50vh;
+    box-shadow: inset 0 0 10px black, 0 0 10px black;
+    background-color: rgba(0, 0, 0, 0.422);
+    border-radius: 5px;
 }
 
 #datos {
@@ -165,6 +185,11 @@ nav {
         border-radius: 10px;
         float: right;
         margin-right: 40px;
+        transition: 0.3s;
+        cursor: pointer;
+        &:hover {
+            transform: scale(120%);
+        }
     }
 
     > #aceptar,
@@ -191,7 +216,7 @@ nav {
     }
 
     > #aceptar {
-        margin-left: 30px;
+        margin-left: 70px;
         background-image: radial-gradient(rgb(53, 117, 147), rgb(27, 62, 78));
         border: 1px solid rgb(27, 62, 78);
     }
@@ -209,8 +234,12 @@ nav {
 
 // SECCION DE PREGUNTAS
 #divPregunta {
-    margin-bottom: 70px;
-
+    margin-bottom: 40px;
+    box-shadow: inset 0 0 10px black, 0 0 10px black;
+    background-color: rgba(0, 0, 0, 0.422);
+    border-radius: 5px;
+    padding: 10px;
+    padding-bottom: 20px;
     > .labelPreg {
         cursor: pointer;
         text-align: left;
@@ -230,6 +259,7 @@ nav {
             text-align: center;
             background-color: rgba(255, 255, 255, 0.768);
             outline: none;
+            box-shadow: 0 5px 10px black;
         }
     }
 
@@ -248,6 +278,11 @@ nav {
         width: 30%;
         padding: 5px 20px 5px 20px;
         transition: 0.4s;
+
+        &:hover {
+            transform: scale(110%);
+            box-shadow: 0 0 10px black, inset 0 0 30px black;
+        }
     }
 }
 
