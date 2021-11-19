@@ -82,9 +82,40 @@
         <div id=secJuego>
             <h1 id=turno></h1>
             <div id=imagenes> </div>
+
             <div id=datos>
+                <h2 id=pregRecibida>Eres rojo?</h2>
+
+                <!-- SECCION DE PREGUNTA -->
+                <div id=divPregunta>
+                    <label class=labelPreg>
+                        <span>Pregunta: </span>
+                        <input id=pregunta type="text" list=opcionesPreg>
+                    </label>
+                    <br>
+                    <button>Enviar Pregunta</button>
+                    <br>
+                </div>
+
+
+
+                <!-- SECCION DE RESPUESTA -->
+                <div id=divRespuesta>
+                    <label class=labelResp>
+                        <span>Respuesta </span>
+                        <br>
+                        <select id=respuesta>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
+                            <option value="No se">No se</option>
+                        </select>
+                    </label>
+                    <br>
+                </div>
+
                 <button class="ocultar" id=adivinar>ADIVINAR</button>
                 <button class="ocultar" id=aceptar>ACEPTAR</button>
+
                 <img class="ocultar" draggable="false" id=mipersonaje>
             </div>
         </div>
@@ -97,8 +128,9 @@
     </div>
 
 
-
-
+    <datalist id=opcionesPreg>
+        <option value="¿Que color predomina en tu vestuario?"></option>
+    </datalist>
 
 
 

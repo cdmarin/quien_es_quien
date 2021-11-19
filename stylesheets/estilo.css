@@ -131,26 +131,40 @@ nav {
 }
 
 /* line 115, ../sass/estilo.scss */
-#imagenes {
-  text-align: center;
+.clikado {
+  box-shadow: 0 5px 25px black, 0 5px 25px black, inset 0 0 10px black !important;
+  transform: scale(110%);
 }
 
-/* line 119, ../sass/estilo.scss */
+/* line 120, ../sass/estilo.scss */
+#imagenes {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* line 125, ../sass/estilo.scss */
 #datos {
   text-align: center;
   margin-top: 20px;
 }
-/* line 123, ../sass/estilo.scss */
+/* line 129, ../sass/estilo.scss */
+#datos > #pregRecibida {
+  color: white;
+}
+/* line 133, ../sass/estilo.scss */
 #datos > #mipersonaje {
   width: 170px;
   height: 170px;
   border: 2px groove white;
-  background-image: radial-gradient(#357593, #1b3e4e);
+  background-color: #357593;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   border-radius: 10px;
   float: right;
   margin-right: 40px;
 }
-/* line 133, ../sass/estilo.scss */
+/* line 146, ../sass/estilo.scss */
 #datos > #aceptar,
 #datos #adivinar {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
@@ -158,36 +172,81 @@ nav {
   font-weight: bold;
   color: white;
   margin-top: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 100px;
   outline: none;
   width: 30%;
   box-shadow: 0 0 10px black;
   text-shadow: 0 0 10px black;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 5px 20px 5px 20px;
   transition: 0.4s;
 }
-/* line 149, ../sass/estilo.scss */
+/* line 162, ../sass/estilo.scss */
 #datos > #aceptar:hover,
 #datos #adivinar:hover {
   transform: scale(110%);
   border-color: black;
-  box-shadow: 0 5px 15px black, inset 0 0 10px black;
+  box-shadow: 0 5px 15px black, 0 0px 0px black inset 0 0 10px black;
 }
-/* line 156, ../sass/estilo.scss */
+/* line 169, ../sass/estilo.scss */
 #datos > #aceptar {
   margin-left: 30px;
   background-image: radial-gradient(#357593, #1b3e4e);
   border: 1px solid #1b3e4e;
 }
-/* line 161, ../sass/estilo.scss */
+/* line 174, ../sass/estilo.scss */
 #datos > #adivinar {
   margin-left: 30px;
   background-image: radial-gradient(#fd8b21, #ff5c19);
   border: 1px solid #1b3e4e;
 }
 
-/* line 168, ../sass/estilo.scss */
+/* line 181, ../sass/estilo.scss */
+#divPregunta {
+  margin-bottom: 70px;
+}
+/* line 184, ../sass/estilo.scss */
+#divPregunta > .labelPreg {
+  cursor: pointer;
+  text-align: left;
+  width: 70%;
+}
+/* line 188, ../sass/estilo.scss */
+#divPregunta > .labelPreg > span {
+  color: white;
+  font-size: 20px;
+  user-select: none;
+}
+/* line 193, ../sass/estilo.scss */
+#divPregunta > .labelPreg #pregunta {
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  margin-top: 20px;
+  font-size: 20px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.768);
+  outline: none;
+}
+/* line 205, ../sass/estilo.scss */
+#divPregunta > .labelPreg #respuesta {
+  width: 100%;
+  margin-top: 20px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.768);
+}
+/* line 210, ../sass/estilo.scss */
+#divPregunta > .labelPreg #respuesta > option {
+  padding: 10px;
+}
+
+/* line 217, ../sass/estilo.scss */
+#divRespuesta {
+  margin-bottom: 70px;
+}
+
+/* line 221, ../sass/estilo.scss */
 #turno {
   color: white;
   text-align: center;
