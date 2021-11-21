@@ -622,7 +622,7 @@ nav {
 
   /* line 536, ../sass/estilo.scss */
   .nav-item > .nav-link {
-    margin-right: 30px;
+    margin-right: 10px;
     transition: 0.3s;
     text-shadow: 0 0px 10px black;
     cursor: pointer;
@@ -639,7 +639,7 @@ nav {
     width: 50px;
     border: 2px solid black;
     box-shadow: 0 0 10px black;
-    margin-right: 10px;
+    margin-right: 5px;
     padding: 5px;
   }
 

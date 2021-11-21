@@ -74,6 +74,7 @@ const cerrarSesion = (user) => {
 const muestraUsuarios = (user) => {
     firebase.firestore().collection("jugadores").onSnapshot((result) => {
             result.forEach(element => {
+                $("#userDisponibles").empty();
                 if (user.displayName != element.id) {
                     $("#userDisponibles").append($("<option value='" + element.id + "'></option>"));
                 }
@@ -119,15 +120,12 @@ const agregarJugador = (user) => {
                                 arrayJugadores.push(user.displayName);
                                 localStorage.setItem("numSala", sala);
                                 localStorage.setItem("numJugador", 1);
-                                console.log("no");
                                 if (array.exists) {
 
                                     colecSalas.doc("sala-" + sala).update({
                                         jugadores: arrayJugadores
                                     })
                                 }
-
-                                console.log("si");
 
                                 cargarArchivos();
                             })
@@ -442,7 +440,6 @@ const cargarArchivos = () => {
         }
 
         if (!result.exists) {
-            console.log("aqui");
             resetVariables();
         }
     })
