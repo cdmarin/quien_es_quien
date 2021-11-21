@@ -5,7 +5,7 @@ firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         $("#botones").append("<button class='btn btn-outline-danger' id='btnCerrarSession'>Cerrar sesion</button>");
         $("#nombreUsuario").text("Bienvenido " + user.displayName);
-        cerrarSesion();
+        cerrarSesion(user);
         agregarJugador(user);
 
         cargarArchivos();
@@ -55,16 +55,18 @@ const iniciarSesion = () => {
     $("#insesion").removeClass("ocultar");
 };
 
-const cerrarSesion = () => {
+const cerrarSesion = (user) => {
     $("#btnCerrarSession").click(() => {
         $(this).remove();
+        firebase.firestore().collection("jugadores").doc(user.displayName).delete();
         firebase.auth().signOut();
         $("#btnCerrarSession").remove();
         resetVariables();
+        $("#formulario").addClass("ocultar");
 
     });
     $("#formulario").removeClass("ocultar");
-    $("#salir").addClass("ocultar");
+    $("#salir").removeClass("ocultar");
     $("#insesion").addClass("ocultar");
 
 }
