@@ -7,7 +7,7 @@ firebase.auth().onAuthStateChanged((user) => {
         $("#nombreUsuario").text("Bienvenido " + user.displayName);
         cerrarSesion(user);
         agregarJugador(user);
-
+        muestraUsuarios(user);
         cargarArchivos();
         // EVENTO DE BUSCAR JUGADOR
         $("#buscar").click((e) => {
@@ -69,6 +69,17 @@ const cerrarSesion = (user) => {
     $("#salir").removeClass("ocultar");
     $("#insesion").addClass("ocultar");
 
+}
+
+const muestraUsuarios = (user) => {
+    firebase.firestore().collection("jugadores").onSnapshot((result) => {
+            result.forEach(element => {
+                if (user.displayName != element.id) {
+                    $("#userDisponibles").append($("<option value='" + element.id + "'></option>"));
+                }
+
+            });
+        })
 }
 
 // AGREGA EL JUGADOR A LA SALA TRAS RECIBIR LA INVITACION Y ACEPTAR, SI RECHAZA ELIMINA LA SALA

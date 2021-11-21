@@ -83,7 +83,7 @@
         <form action="" class="ocultar" id=formulario>
             <h1 class="titulo">Escriba el nombre del usuario al que desee mandarle una solicitud</h1>
             <br>
-            <input type="text" id="inpUsuario" placeholder="Escriba el nombre del usuario">
+            <input type="text" id="inpUsuario" placeholder="Escriba el nombre del usuario" list=userDisponibles>
             <br>
             <input type="button" class="btn btn-primary" id=buscar value="Buscar">
             <br>
@@ -146,6 +146,7 @@
         <div id=imgFin draggable="false"></div>
     </div>
 
+    <datalist id=userDisponibles></datalist>
 
     <datalist id=opcionesPreg>
         <option value="¿Predomina el rojo en tu vestuario?"></option>
