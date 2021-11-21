@@ -214,7 +214,12 @@ nav {
         }
     }
     > #envResp {
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+        font-weight: bold;
         background-image: radial-gradient(rgb(42, 84, 35), rgb(24, 49, 22));
+        color: white;
+        outline: none;
+        transition: 0.4s;
     }
 }
 
@@ -486,6 +491,7 @@ nav {
                 width: 100%;
                 font-size: 20px;
                 margin-top: 20px;
+                border-radius: 10px;
                 > option {
                     padding: 10px;
                 }
@@ -496,6 +502,9 @@ nav {
             border-radius: 10px;
             margin-top: 40px;
             width: 30%;
+            &:hover {
+                transform: scale(110%);
+            }
         }
     }
 
@@ -645,7 +654,7 @@ nav {
         font-size: 15px;
         text-shadow: 0 0 10px black;
         margin-top: 5px;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
     }
 
     #imagenes {
@@ -660,8 +669,8 @@ nav {
         margin-top: 10px;
 
         > #mipersonaje {
-            width: 100px;
-            height: 100px;
+            width: 70px;
+            height: 70px;
             border: 1px groove white;
             border-radius: 10px;
             margin-right: 20px;
@@ -669,9 +678,9 @@ nav {
 
         > #aceptar,
         #adivinar {
-            font-size: 100%;
+            font-size: 13px;
             margin-top: 20px;
-            margin-bottom: 60px;
+            margin-bottom: 20px;
             width: 30%;
             box-shadow: 0 0 8px black;
             text-shadow: 0 0 8px black;
@@ -686,7 +695,7 @@ nav {
         }
 
         > #aceptar {
-            margin-left: 40px;
+            margin-left: 20px;
             border: 1px solid rgb(27, 62, 78);
         }
         > #adivinar {
@@ -696,6 +705,8 @@ nav {
     }
 
     #textCambio {
+        margin-top: 10px;
+        font-size: 13px;
         text-shadow: 0 0 7px black;
     }
 
@@ -709,33 +720,33 @@ nav {
         > .labelPreg {
             width: 70%;
             > span {
-                font-size: 15px;
+                font-size: 1px;
             }
             #pregunta {
                 width: 100%;
                 border-radius: 5px;
                 padding: 5px;
-                margin-top: 20px;
-                font-size: 20px;
+                margin-top: 5px;
+                font-size: 13px;
                 box-shadow: 0 5px 10px black;
             }
         }
 
         #envPreg {
-            font-size: 100%;
+            font-size: 10px;
             box-shadow: 0 0 5px black;
             text-shadow: 0 0 5px black;
             border: 2px groove;
             border-radius: 10px;
-            margin-top: 20px;
-            width: 30%;
+            margin-top: 10px;
+            width: 70%;
             padding: 5px 10px 5px 10px;
         }
     }
 
     /***************************************************** SECCION DE RESPUESTA ****************************************************/
     #divRespuesta {
-        margin-bottom: 40px;
+        margin-bottom: 20px;
         box-shadow: inset 0 0 7px black, 0 0 7px black;
         border-radius: 5px;
         padding: 7px;
@@ -749,6 +760,7 @@ nav {
             #respuesta {
                 width: 100%;
                 font-size: 10px;
+                border-radius: 10px;
                 margin-top: 15px;
                 > option {
                     padding: 10px;
@@ -759,7 +771,8 @@ nav {
             border: 1px groove;
             border-radius: 10px;
             margin-top: 20px;
-            width: 30%;
+            width: 70%;
+            font-size: 10px;
         }
     }
 
@@ -770,9 +783,9 @@ nav {
         padding: 10px;
         border-radius: 7px;
         border: 1px solid white;
-        box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.789), inset 0 0 50px rgba(255, 255, 255, 0.354);
+        box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.524), inset 0 0 50px rgba(255, 255, 255, 0.272);
         > h1 {
-            font-size: 3vw;
+            font-size: 30px;
             margin-top: 20px;
             margin-bottom: 20px;
             -webkit-text-stroke: 0.2px white;

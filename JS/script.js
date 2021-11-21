@@ -4,7 +4,7 @@ var temp;
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         $("#botones").append("<button class='btn btn-outline-danger' id='btnCerrarSession'>Cerrar sesion</button>");
-        $("#nombreUsuario").text("Bienvenido " + user.displayName);
+        $("#nombreUsuario").text("Bienvenido " + user.displayName.split(" ")[0]);
         cerrarSesion(user);
         agregarJugador(user);
         muestraUsuarios(user);
@@ -58,6 +58,9 @@ const iniciarSesion = () => {
 const cerrarSesion = (user) => {
     $("#btnCerrarSession").click(() => {
         $(this).remove();
+        firebase.firestore().collection("jugadores").doc(user.displayName).update({
+            solicitud: firebase.firestore.FieldValue.delete()
+        })
         firebase.firestore().collection("jugadores").doc(user.displayName).delete();
         firebase.auth().signOut();
         $("#btnCerrarSession").remove();
@@ -92,7 +95,7 @@ const agregarJugador = (user) => {
     })
 
     coleccion.doc(user.displayName).onSnapshot((result) => {
-        if (result.data().solicitud != undefined && !localStorage.getItem("numSala")) {
+        if (result.exists && result.data().solicitud != undefined && !localStorage.getItem("numSala")) {
 
             /*************************************** MOSTRAMOS LA SOLICITUD *************************************************************/
             // BUSCAMOS EL NOMBRE DEL USUARIO
@@ -148,7 +151,10 @@ const agregarJugador = (user) => {
 }
 
 const buscarUsuario = (user, nombre) => {
-    resetVariables();
+
+    if (localStorage.getItem("numSala")) {
+        resetVariables();
+    }
 
     var coleccion = firebase.firestore().collection("jugadores");
     coleccion.doc(nombre).get()
@@ -256,6 +262,8 @@ const cargarArchivos = () => {
                                 $("#textCambio").text("");
                                 $("#pregunta").text("");
                             }
+
+                            $("#pregunta").val("");
 
                             // SI ES MI TURNO 
                             if (result.data().turno == localStorage.getItem("numJugador")) {
@@ -377,6 +385,7 @@ const cargarArchivos = () => {
             })
 
             $("#adivinar").click((e) => {
+
                 firebase.firestore().collection("salas").doc("jugadas-" + localStorage.getItem("numSala"))
                     .get().then((result) => {
                         if (!result.data().miPersonaje.includes("")) {
