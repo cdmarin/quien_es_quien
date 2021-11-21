@@ -620,21 +620,28 @@ nav {
     width: 5px;
   }
 
-  /* line 536, ../sass/estilo.scss */
+  /* line 535, ../sass/estilo.scss */
+  nav {
+    margin-bottom: 10px;
+    top: -30px;
+  }
+
+  /* line 541, ../sass/estilo.scss */
   .nav-item > .nav-link {
+    font-size: 12px;
     margin-right: 10px;
     transition: 0.3s;
     text-shadow: 0 0px 10px black;
     cursor: pointer;
   }
 
-  /* line 544, ../sass/estilo.scss */
+  /* line 550, ../sass/estilo.scss */
   .navbar-brand {
     text-shadow: 0 5px 10px rgba(0, 0, 0, 0.565);
     font-weight: bold;
   }
 
-  /* line 549, ../sass/estilo.scss */
+  /* line 555, ../sass/estilo.scss */
   .logonav {
     width: 50px;
     border: 2px solid black;
@@ -643,14 +650,14 @@ nav {
     padding: 5px;
   }
 
-  /* line 557, ../sass/estilo.scss */
+  /* line 563, ../sass/estilo.scss */
   #nombreUsuario {
-    -webkit-text-stroke: 0.01px white;
-    font-size: 10px;
+    -webkit-text-stroke: 0.5px white;
+    font-size: 15px;
     margin-right: 10px;
   }
 
-  /* line 563, ../sass/estilo.scss */
+  /* line 569, ../sass/estilo.scss */
   .contenedor {
     height: 85vh;
     width: 90vw;
@@ -659,43 +666,44 @@ nav {
     border: 1px solid white;
     box-shadow: 0 0 10px black;
   }
-  /* line 571, ../sass/estilo.scss */
+  /* line 577, ../sass/estilo.scss */
   .contenedor > form {
     padding: 15px;
   }
-  /* line 573, ../sass/estilo.scss */
+  /* line 579, ../sass/estilo.scss */
   .contenedor > form > #inpUsuario {
     box-shadow: inset 0 0 10px black;
-    width: 70%;
-    font-size: 10px;
+    width: 90%;
+    font-size: 13px;
     padding: 5px;
     margin: 10px;
   }
-  /* line 580, ../sass/estilo.scss */
+  /* line 586, ../sass/estilo.scss */
   .contenedor > form > #buscar {
     padding: 5px;
     margin-top: 20px;
-    width: 50%;
-    font-size: 10px;
+    width: 60%;
+    font-size: 15px;
     box-shadow: inset 0 0 10px black;
   }
 
-  /* line 590, ../sass/estilo.scss */
+  /* line 596, ../sass/estilo.scss */
   #insesion {
     padding: 10px;
     text-shadow: 0 0 5px black;
   }
-  /* line 593, ../sass/estilo.scss */
+  /* line 599, ../sass/estilo.scss */
   #insesion > h1 {
-    margin-bottom: 15px;
+    font-size: 20px;
+    margin-bottom: 20px;
   }
-  /* line 597, ../sass/estilo.scss */
+  /* line 604, ../sass/estilo.scss */
   #insesion > div > button {
-    width: 50%;
+    width: 60%;
     box-shadow: inset 0 0 10px black;
     transition: 0.3s;
   }
-  /* line 603, ../sass/estilo.scss */
+  /* line 610, ../sass/estilo.scss */
   #insesion > img {
     margin-top: 20px;
     box-shadow: 0 0 5px black, 0 0 15px black;
@@ -703,7 +711,7 @@ nav {
     padding: 10px;
   }
 
-  /* line 611, ../sass/estilo.scss */
+  /* line 618, ../sass/estilo.scss */
   #solicitud {
     top: 20%;
     width: 70%;
@@ -711,11 +719,11 @@ nav {
     border: 1px solid black;
     border-radius: 10px;
   }
-  /* line 617, ../sass/estilo.scss */
+  /* line 624, ../sass/estilo.scss */
   #solicitud > h1 {
     text-shadow: 0 0 7px black;
   }
-  /* line 620, ../sass/estilo.scss */
+  /* line 627, ../sass/estilo.scss */
   #solicitud > button {
     padding-left: 15px;
     padding-right: 15px;
@@ -725,7 +733,7 @@ nav {
   }
 
   /***************************** SECCION DEL JUEGO *********************************/
-  /* line 630, ../sass/estilo.scss */
+  /* line 637, ../sass/estilo.scss */
   .imgJuego {
     width: 50px;
     height: 50px;
@@ -733,7 +741,7 @@ nav {
     margin: 7px;
   }
 
-  /* line 637, ../sass/estilo.scss */
+  /* line 644, ../sass/estilo.scss */
   .titulo {
     font-size: 15px;
     text-shadow: 0 0 10px black;
@@ -741,7 +749,7 @@ nav {
     margin-bottom: 5px;
   }
 
-  /* line 644, ../sass/estilo.scss */
+  /* line 651, ../sass/estilo.scss */
   #imagenes {
     margin-bottom: 20px;
     height: 55vh;
@@ -750,11 +758,11 @@ nav {
   }
 
   /***************************************** SECCION DE PREGUNTAS Y RESPUESTAS ***********************************/
-  /* line 652, ../sass/estilo.scss */
+  /* line 659, ../sass/estilo.scss */
   #datos {
     margin-top: 10px;
   }
-  /* line 655, ../sass/estilo.scss */
+  /* line 662, ../sass/estilo.scss */
   #datos > #mipersonaje {
     width: 100px;
     height: 100px;
@@ -762,7 +770,7 @@ nav {
     border-radius: 10px;
     margin-right: 20px;
   }
-  /* line 663, ../sass/estilo.scss */
+  /* line 670, ../sass/estilo.scss */
   #datos > #aceptar,
   #datos #adivinar {
     font-size: 100%;
@@ -774,31 +782,31 @@ nav {
     border-radius: 8px;
     padding: 5px 10px 5px 10px;
   }
-  /* line 674, ../sass/estilo.scss */
+  /* line 681, ../sass/estilo.scss */
   #datos > #aceptar:hover,
   #datos #adivinar:hover {
     transform: scale(110%);
     border-color: black;
     box-shadow: 0 5px 15px black, 0 0px 0px black inset 0 0 10px black;
   }
-  /* line 681, ../sass/estilo.scss */
+  /* line 688, ../sass/estilo.scss */
   #datos > #aceptar {
     margin-left: 40px;
     border: 1px solid #1b3e4e;
   }
-  /* line 685, ../sass/estilo.scss */
+  /* line 692, ../sass/estilo.scss */
   #datos > #adivinar {
     margin-left: 10px;
     border: 1px solid #1b3e4e;
   }
 
-  /* line 691, ../sass/estilo.scss */
+  /* line 698, ../sass/estilo.scss */
   #textCambio {
     text-shadow: 0 0 7px black;
   }
 
   /***************************************************** SECCION DE PREGUNTAS ****************************************************/
-  /* line 696, ../sass/estilo.scss */
+  /* line 703, ../sass/estilo.scss */
   #divPregunta {
     margin-bottom: 20px;
     box-shadow: inset 0 0 5px black, 0 0 5px black;
@@ -806,15 +814,15 @@ nav {
     padding: 7px;
     padding-bottom: 15px;
   }
-  /* line 702, ../sass/estilo.scss */
+  /* line 709, ../sass/estilo.scss */
   #divPregunta > .labelPreg {
     width: 70%;
   }
-  /* line 704, ../sass/estilo.scss */
+  /* line 711, ../sass/estilo.scss */
   #divPregunta > .labelPreg > span {
     font-size: 15px;
   }
-  /* line 707, ../sass/estilo.scss */
+  /* line 714, ../sass/estilo.scss */
   #divPregunta > .labelPreg #pregunta {
     width: 100%;
     border-radius: 5px;
@@ -823,7 +831,7 @@ nav {
     font-size: 20px;
     box-shadow: 0 5px 10px black;
   }
-  /* line 717, ../sass/estilo.scss */
+  /* line 724, ../sass/estilo.scss */
   #divPregunta #envPreg {
     font-size: 100%;
     box-shadow: 0 0 5px black;
@@ -836,7 +844,7 @@ nav {
   }
 
   /***************************************************** SECCION DE RESPUESTA ****************************************************/
-  /* line 730, ../sass/estilo.scss */
+  /* line 737, ../sass/estilo.scss */
   #divRespuesta {
     margin-bottom: 40px;
     box-shadow: inset 0 0 7px black, 0 0 7px black;
@@ -844,25 +852,25 @@ nav {
     padding: 7px;
     padding-bottom: 15px;
   }
-  /* line 737, ../sass/estilo.scss */
+  /* line 744, ../sass/estilo.scss */
   #divRespuesta > .labelResp {
     width: 70%;
   }
-  /* line 739, ../sass/estilo.scss */
+  /* line 746, ../sass/estilo.scss */
   #divRespuesta > .labelResp > span {
     font-size: 14px;
   }
-  /* line 742, ../sass/estilo.scss */
+  /* line 749, ../sass/estilo.scss */
   #divRespuesta > .labelResp #respuesta {
     width: 100%;
     font-size: 10px;
     margin-top: 15px;
   }
-  /* line 746, ../sass/estilo.scss */
+  /* line 753, ../sass/estilo.scss */
   #divRespuesta > .labelResp #respuesta > option {
     padding: 10px;
   }
-  /* line 751, ../sass/estilo.scss */
+  /* line 758, ../sass/estilo.scss */
   #divRespuesta > #envResp {
     border: 1px groove;
     border-radius: 10px;
@@ -870,7 +878,7 @@ nav {
     width: 30%;
   }
 
-  /* line 759, ../sass/estilo.scss */
+  /* line 766, ../sass/estilo.scss */
   #victoria {
     top: 15vh;
     height: 60vh;
@@ -880,14 +888,14 @@ nav {
     border: 1px solid white;
     box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.789), inset 0 0 50px rgba(255, 255, 255, 0.354);
   }
-  /* line 767, ../sass/estilo.scss */
+  /* line 774, ../sass/estilo.scss */
   #victoria > h1 {
     font-size: 3vw;
     margin-top: 20px;
     margin-bottom: 20px;
     -webkit-text-stroke: 0.2px white;
   }
-  /* line 773, ../sass/estilo.scss */
+  /* line 780, ../sass/estilo.scss */
   #victoria > div {
     border-radius: 5px;
     width: 200px;

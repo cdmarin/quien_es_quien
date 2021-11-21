@@ -73,14 +73,14 @@ const cerrarSesion = (user) => {
 
 const muestraUsuarios = (user) => {
     firebase.firestore().collection("jugadores").onSnapshot((result) => {
-            result.forEach(element => {
-                $("#userDisponibles").empty();
-                if (user.displayName != element.id) {
-                    $("#userDisponibles").append($("<option value='" + element.id + "'></option>"));
-                }
+        result.forEach(element => {
+            $("#userDisponibles").empty();
+            if (user.displayName != element.id) {
+                $("#userDisponibles").append($("<option value='" + element.id + "'></option>"));
+            }
 
-            });
-        })
+        });
+    })
 }
 
 // AGREGA EL JUGADOR A LA SALA TRAS RECIBIR LA INVITACION Y ACEPTAR, SI RECHAZA ELIMINA LA SALA
