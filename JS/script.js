@@ -1,6 +1,27 @@
 const auth = firebase.auth();
 var adivinar = false;
 var temp;
+window.onload = () => {
+    $("#info").click(cambiaPestaña);
+    $("#juego").click(cambiaPestaña);
+}
+
+function cambiaPestaña() {
+    $("#salir").trigger("click");
+
+    $(".pestaña").addClass("ocultar")
+
+    switch (this.id) {
+        case "info":
+            $("#secInfo").removeClass("ocultar");
+            break;
+        case "juego":
+            $("#formulario").removeClass("ocultar");
+            break;
+    }
+}
+
+
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         $("#botones").append("<button class='btn btn-outline-danger' id='btnCerrarSession'>Cerrar sesion</button>");
@@ -51,7 +72,7 @@ const iniciarSesion = () => {
     });
 
     $("#formulario").addClass("ocultar");
-    $("#salir").addClass("ocultar");
+    $(".nav-item").addClass("ocultar")
     $("#insesion").removeClass("ocultar");
 };
 
@@ -69,7 +90,7 @@ const cerrarSesion = (user) => {
 
     });
     $("#formulario").removeClass("ocultar");
-    $("#salir").removeClass("ocultar");
+    $(".nav-item").removeClass("ocultar")
     $("#insesion").addClass("ocultar");
 
 }

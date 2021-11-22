@@ -243,6 +243,19 @@ nav {
     }
 }
 
+#secInfo {
+    text-align: center;
+    color: white;
+    > h1 {
+        font-weight: bolder;
+    }
+    > div {
+        background-color: rgba(0, 0, 0, 0.49);
+        border-radius: 10px;
+        text-align: left;
+    }
+}
+
 /****************************************************************************
 
     PANTALLA GRANDE
@@ -528,6 +541,32 @@ nav {
             height: 300px;
         }
     }
+
+    #secInfo {
+        padding: 20px;
+        > h1 {
+            text-shadow: 0 0 10px black;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+        }
+
+        > div {
+            padding: 15px;
+            text-shadow: 0 0 5px black;
+            border: 1px solid white;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.279);
+            > p {
+                font-size: 20px;
+                > img {
+                    width: 250px;
+                    margin: 20px;
+                    border-radius: 10px;
+                    border: 2px solid black;
+                    box-shadow: 0 0 10px black;
+                }
+            }
+        }
+    }
 }
 
 /****************************************************************************
@@ -785,15 +824,40 @@ nav {
         border: 1px solid white;
         box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.524), inset 0 0 50px rgba(255, 255, 255, 0.272);
         > h1 {
-            font-size: 30px;
+            font-size: 25px;
             margin-top: 20px;
             margin-bottom: 20px;
-            -webkit-text-stroke: 0.2px white;
+            -webkit-text-stroke: 1px white;
         }
         > div {
             border-radius: 5px;
             width: 200px;
             height: 200px;
+        }
+    }
+
+    #secInfo {
+        padding: 20px;
+        > h1 {
+            text-shadow: 0 0 10px black;
+            margin-bottom: 15px;
+        }
+
+        > div {
+            padding: 15px;
+            text-shadow: 0 0 5px black;
+            border: 1px solid white;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.279);
+            > p {
+                font-size: 20px;
+                > img {
+                    width: 130px;
+                    margin: 20px;
+                    border-radius: 10px;
+                    border: 1px solid black;
+                    box-shadow: 0 0 10px black;
+                }
+            }
         }
     }
 }

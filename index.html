@@ -62,7 +62,13 @@
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
+                    <a class="nav-link" id=juego>Jugar</a>
+                </li>
+                <li class="nav-item active">
                     <a class="nav-link" id=salir>Salir de Partida</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" id=info>¿Como se juega?</a>
                 </li>
             </ul>
             <div id=botones></div>
@@ -73,14 +79,14 @@
 
     <div class="contenedor">
 
-        <div class="ocultar" id=insesion>
+        <section class="pestaña ocultar" id=insesion>
             <h1>INICIE SESION ANTES DE COMENZAR A JUGAR</h1>
             <div id=botAcc></div>
             <img src="IMG/siluetaCuerpo.png" alt="">
-        </div>
+        </section>
 
 
-        <form action="" class="ocultar" id=formulario>
+        <form action="" class="pestaña ocultar" id=formulario>
             <h1 class="titulo">Escriba el nombre del usuario al que desee mandarle una solicitud</h1>
             <br>
             <input type="text" id="inpUsuario" placeholder="Escriba el nombre del usuario" list=userDisponibles>
@@ -90,7 +96,7 @@
 
         </form>
 
-        <div id=secJuego class="ocultar">
+        <section class="pestaña ocultar" id=secJuego>
             <h1 class="titulo" id=turno></h1>
             <div id=imagenes> </div>
 
@@ -132,7 +138,37 @@
 
                 <img class="ocultar" draggable="false" id=mipersonaje>
             </div>
-        </div>
+        </section>
+
+        <section class="pestaña ocultar" id=secInfo>
+            <h1> ¿Como se Juega? </h1>
+            <div>
+                <p>
+                    <img style="float: right;" src="IMG/info1.jpg" alt="">
+
+                    Cada jugador dispone de tarjetas diferentes, pero con las mismas imagenes que el contrincante, estas
+                    contienen dibujos de personajes. El objetivo del jugador consiste en adivinar que personaje es el
+                    que ha escogido el contrincante.
+                    <br>
+                    <br>
+                    El juego comienza con la eleccion del su propio personaje para cada jugador. Este solo deberá ser
+                    conocido por él mismo. A partir de aqui comienza las ronda de preguntas, solo será permitida 1 por
+                    ronda, y respuestas, las cuales se limitarán a «"Si"», «"No"» o «"No se"».El jugador que tenga el
+                    turno deberá realizar una pregunta al contrincante y en base a su respuesta
+                    podrá descartar o no, los personajes que no encajen con esa descripción. Un ejemplo de pregunta es
+                    «¿Tiene bigotes tu personaje?», si el contrincante respone «"No"», si deberán eliminar todos los
+                    personajes que no tenagn bigote, en caso de ser «"Si"» eliminarán los que tengan bigote.
+                    <br>
+                    <br>
+
+                    Tras eliminar los suficientes personajes, el jugador que tenga claro quien pueda ser el personaje
+                    del contrincante, podrá intentar adivinar el nombre de su personaje. En caso de acertar,
+                    la victoria será para dicho jugador. En caso de no acertar, será para el otro jugador.
+
+
+                </p>
+            </div>
+        </section>
     </div>
 
     <div class="ocultar" id=solicitud>
