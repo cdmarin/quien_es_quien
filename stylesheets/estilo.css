@@ -597,7 +597,7 @@ nav {
   /* line 511, ../sass/estilo.scss */
   #victoria {
     top: 20vh;
-    height: 60vh;
+    height: 70vh;
     width: 80vw;
     padding: 20px;
     border-radius: 10px;
@@ -786,7 +786,7 @@ nav {
     font-size: 13px;
     margin-top: 20px;
     margin-bottom: 20px;
-    width: 30%;
+    width: 35%;
     box-shadow: 0 0 8px black;
     text-shadow: 0 0 8px black;
     border-radius: 8px;
@@ -896,7 +896,7 @@ nav {
   #victoria {
     top: 15vh;
     height: 60vh;
-    width: 80vw;
+    width: 90vw;
     padding: 10px;
     border-radius: 7px;
     border: 1px solid white;

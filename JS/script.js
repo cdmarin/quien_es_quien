@@ -76,10 +76,10 @@ const cerrarSesion = (user) => {
 
 const muestraUsuarios = (user) => {
     firebase.firestore().collection("jugadores").onSnapshot((result) => {
+        $("#userDisponibles").empty();
         result.forEach(element => {
-            $("#userDisponibles").empty();
             if (user.displayName != element.id) {
-                $("#userDisponibles").append($("<option value='" + element.id + "'></option>"));
+                $("#userDisponibles").append($("<option value='" + element.id + "'>Ususario: " + element.id + " </option>"));
             }
 
         });
