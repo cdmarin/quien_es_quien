@@ -256,10 +256,16 @@ nav {
     }
 }
 
-#verImagenes {
+#personajes {
     text-align: center;
-    padding: 20px;
+    > h1 {
+        color: white;
+    }
+    > #verImagenes {
+        padding: 20px;
+    }
 }
+
 /****************************************************************************
 
     PANTALLA GRANDE
@@ -571,6 +577,17 @@ nav {
             }
         }
     }
+
+    #personajes {
+        > h1 {
+            font-size: 45px;
+            text-shadow: 0 0 10px black;
+            letter-spacing: 5px;
+        }
+        > #verImagenes {
+            padding: 20px;
+        }
+    }
 }
 
 /****************************************************************************
@@ -862,6 +879,16 @@ nav {
                     box-shadow: 0 0 10px black;
                 }
             }
+        }
+    }
+
+    #personajes {
+        > h1 {
+            font-size: 15px;
+            text-shadow: 0 0 5px black;
+        }
+        > #verImagenes {
+            padding: 20px;
         }
     }
 }
