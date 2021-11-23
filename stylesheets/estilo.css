@@ -313,6 +313,12 @@ nav {
   text-align: left;
 }
 
+/* line 259, ../sass/estilo.scss */
+#verImagenes {
+  text-align: center;
+  padding: 20px;
+}
+
 /****************************************************************************
 
     PANTALLA GRANDE
@@ -320,37 +326,37 @@ nav {
 
 *****************************************************************************/
 @media screen and (min-width: 850px) {
-  /* line 266, ../sass/estilo.scss */
+  /* line 270, ../sass/estilo.scss */
   ::-webkit-scrollbar {
     width: 12px;
   }
 
-  /* line 270, ../sass/estilo.scss */
+  /* line 274, ../sass/estilo.scss */
   nav {
     margin-bottom: 10px;
     top: -25px;
   }
 
-  /* line 276, ../sass/estilo.scss */
+  /* line 280, ../sass/estilo.scss */
   .nav-item > .nav-link {
     margin-right: 30px;
     transition: 0.3s;
     text-shadow: 0 0px 10px black;
     cursor: pointer;
   }
-  /* line 281, ../sass/estilo.scss */
+  /* line 285, ../sass/estilo.scss */
   .nav-item > .nav-link:hover {
     text-shadow: 0 5px 20px black;
     transform: scale(105%);
   }
 
-  /* line 288, ../sass/estilo.scss */
+  /* line 292, ../sass/estilo.scss */
   .navbar-brand {
     text-shadow: 0 5px 10px rgba(0, 0, 0, 0.565);
     font-weight: bold;
   }
 
-  /* line 293, ../sass/estilo.scss */
+  /* line 297, ../sass/estilo.scss */
   .logonav {
     width: 50px;
     border: 2px solid black;
@@ -359,14 +365,14 @@ nav {
     padding: 5px;
   }
 
-  /* line 301, ../sass/estilo.scss */
+  /* line 305, ../sass/estilo.scss */
   #nombreUsuario {
     -webkit-text-stroke: 0.01px white;
     font-size: 30px;
     margin-right: 30px;
   }
 
-  /* line 307, ../sass/estilo.scss */
+  /* line 311, ../sass/estilo.scss */
   .contenedor {
     height: 85vh;
     width: 90vw;
@@ -375,11 +381,11 @@ nav {
     border: 2px solid white;
     box-shadow: 0 0 20px black;
   }
-  /* line 315, ../sass/estilo.scss */
+  /* line 319, ../sass/estilo.scss */
   .contenedor > form {
     padding: 30px;
   }
-  /* line 317, ../sass/estilo.scss */
+  /* line 321, ../sass/estilo.scss */
   .contenedor > form > #inpUsuario {
     box-shadow: inset 0 0 10px black;
     width: 70%;
@@ -387,7 +393,7 @@ nav {
     padding: 15px;
     margin: 20px;
   }
-  /* line 324, ../sass/estilo.scss */
+  /* line 328, ../sass/estilo.scss */
   .contenedor > form > #buscar {
     padding: 10px;
     margin-top: 2vh;
@@ -396,26 +402,26 @@ nav {
     box-shadow: inset 0 0 10px black;
   }
 
-  /* line 334, ../sass/estilo.scss */
+  /* line 338, ../sass/estilo.scss */
   #insesion {
     padding: 20px;
     text-shadow: 0 0 10px black;
   }
-  /* line 337, ../sass/estilo.scss */
+  /* line 341, ../sass/estilo.scss */
   #insesion > h1 {
     margin-bottom: 30px;
   }
-  /* line 341, ../sass/estilo.scss */
+  /* line 345, ../sass/estilo.scss */
   #insesion > div > button {
     width: 50%;
     box-shadow: inset 0 0 20px black;
   }
-  /* line 344, ../sass/estilo.scss */
+  /* line 348, ../sass/estilo.scss */
   #insesion > div > button:hover {
     transform: scale(120%);
     box-shadow: inset 0 0 20px black, 0 0 20px #205f33;
   }
-  /* line 350, ../sass/estilo.scss */
+  /* line 354, ../sass/estilo.scss */
   #insesion > img {
     margin-top: 30px;
     box-shadow: 0 0 10px black, 0 0 20px black;
@@ -423,7 +429,7 @@ nav {
     padding: 10px;
   }
 
-  /* line 358, ../sass/estilo.scss */
+  /* line 362, ../sass/estilo.scss */
   #solicitud {
     top: 20%;
     width: 70%;
@@ -431,11 +437,11 @@ nav {
     border: 2px solid black;
     border-radius: 10px;
   }
-  /* line 364, ../sass/estilo.scss */
+  /* line 368, ../sass/estilo.scss */
   #solicitud > h1 {
     text-shadow: 0 0 10px black;
   }
-  /* line 367, ../sass/estilo.scss */
+  /* line 371, ../sass/estilo.scss */
   #solicitud > button {
     padding-left: 20px;
     padding-right: 20px;
@@ -445,19 +451,19 @@ nav {
   }
 
   /***************************** SECCION DEL JUEGO *********************************/
-  /* line 377, ../sass/estilo.scss */
+  /* line 381, ../sass/estilo.scss */
   .imgJuego {
     width: 100px;
     height: 100px;
     border-radius: 10px;
     margin: 10px;
   }
-  /* line 383, ../sass/estilo.scss */
+  /* line 387, ../sass/estilo.scss */
   .imgJuego:hover {
     transform: scale(130%);
   }
 
-  /* line 388, ../sass/estilo.scss */
+  /* line 392, ../sass/estilo.scss */
   .titulo {
     font-size: 30px;
     text-shadow: 0 0 15px black;
@@ -466,7 +472,7 @@ nav {
     letter-spacing: 5px;
   }
 
-  /* line 396, ../sass/estilo.scss */
+  /* line 400, ../sass/estilo.scss */
   #imagenes {
     margin-bottom: 40px;
     height: 55vh;
@@ -475,11 +481,11 @@ nav {
   }
 
   /***************************************** SECCION DE PREGUNTAS Y RESPUESTAS ***********************************/
-  /* line 404, ../sass/estilo.scss */
+  /* line 408, ../sass/estilo.scss */
   #datos {
     margin-top: 20px;
   }
-  /* line 407, ../sass/estilo.scss */
+  /* line 411, ../sass/estilo.scss */
   #datos > #mipersonaje {
     width: 170px;
     height: 170px;
@@ -487,11 +493,11 @@ nav {
     border-radius: 10px;
     margin-right: 40px;
   }
-  /* line 413, ../sass/estilo.scss */
+  /* line 417, ../sass/estilo.scss */
   #datos > #mipersonaje:hover {
     transform: scale(120%);
   }
-  /* line 418, ../sass/estilo.scss */
+  /* line 422, ../sass/estilo.scss */
   #datos > #aceptar,
   #datos #adivinar {
     font-size: 120%;
@@ -503,32 +509,32 @@ nav {
     border-radius: 10px;
     padding: 5px 20px 5px 20px;
   }
-  /* line 429, ../sass/estilo.scss */
+  /* line 433, ../sass/estilo.scss */
   #datos > #aceptar:hover,
   #datos #adivinar:hover {
     transform: scale(110%);
     border-color: black;
     box-shadow: 0 5px 15px black, 0 0px 0px black inset 0 0 10px black;
   }
-  /* line 436, ../sass/estilo.scss */
+  /* line 440, ../sass/estilo.scss */
   #datos > #aceptar {
     margin-left: 70px;
     border: 1px solid #1b3e4e;
   }
-  /* line 440, ../sass/estilo.scss */
+  /* line 444, ../sass/estilo.scss */
   #datos > #adivinar {
     margin-left: 30px;
     border: 1px solid #1b3e4e;
   }
 
-  /* line 446, ../sass/estilo.scss */
+  /* line 450, ../sass/estilo.scss */
   #textCambio {
     letter-spacing: 5px;
     text-shadow: 0 0 10px black;
   }
 
   /***************************************************** SECCION DE PREGUNTAS *************************************************/
-  /* line 452, ../sass/estilo.scss */
+  /* line 456, ../sass/estilo.scss */
   #divPregunta {
     margin-bottom: 40px;
     box-shadow: inset 0 0 10px black, 0 0 10px black;
@@ -536,15 +542,15 @@ nav {
     padding: 10px;
     padding-bottom: 20px;
   }
-  /* line 458, ../sass/estilo.scss */
+  /* line 462, ../sass/estilo.scss */
   #divPregunta > .labelPreg {
     width: 70%;
   }
-  /* line 460, ../sass/estilo.scss */
+  /* line 464, ../sass/estilo.scss */
   #divPregunta > .labelPreg > span {
     font-size: 20px;
   }
-  /* line 463, ../sass/estilo.scss */
+  /* line 467, ../sass/estilo.scss */
   #divPregunta > .labelPreg #pregunta {
     width: 100%;
     border-radius: 5px;
@@ -553,7 +559,7 @@ nav {
     font-size: 20px;
     box-shadow: 0 5px 10px black;
   }
-  /* line 473, ../sass/estilo.scss */
+  /* line 477, ../sass/estilo.scss */
   #divPregunta #envPreg {
     font-size: 120%;
     box-shadow: 0 0 10px black;
@@ -564,14 +570,14 @@ nav {
     width: 30%;
     padding: 5px 20px 5px 20px;
   }
-  /* line 483, ../sass/estilo.scss */
+  /* line 487, ../sass/estilo.scss */
   #divPregunta #envPreg:hover {
     transform: scale(110%);
     box-shadow: 0 0 10px black, inset 0 0 30px black;
   }
 
   /***************************************************** SECCION DE RESPUESTA ****************************************************/
-  /* line 491, ../sass/estilo.scss */
+  /* line 495, ../sass/estilo.scss */
   #divRespuesta {
     margin-bottom: 70px;
     box-shadow: inset 0 0 10px black, 0 0 10px black;
@@ -579,38 +585,38 @@ nav {
     padding: 10px;
     padding-bottom: 20px;
   }
-  /* line 498, ../sass/estilo.scss */
+  /* line 502, ../sass/estilo.scss */
   #divRespuesta > .labelResp {
     width: 70%;
   }
-  /* line 500, ../sass/estilo.scss */
+  /* line 504, ../sass/estilo.scss */
   #divRespuesta > .labelResp > span {
     font-size: 20px;
   }
-  /* line 503, ../sass/estilo.scss */
+  /* line 507, ../sass/estilo.scss */
   #divRespuesta > .labelResp #respuesta {
     width: 100%;
     font-size: 20px;
     margin-top: 20px;
     border-radius: 10px;
   }
-  /* line 508, ../sass/estilo.scss */
+  /* line 512, ../sass/estilo.scss */
   #divRespuesta > .labelResp #respuesta > option {
     padding: 10px;
   }
-  /* line 513, ../sass/estilo.scss */
+  /* line 517, ../sass/estilo.scss */
   #divRespuesta > #envResp {
     border: 2px groove;
     border-radius: 10px;
     margin-top: 40px;
     width: 30%;
   }
-  /* line 518, ../sass/estilo.scss */
+  /* line 522, ../sass/estilo.scss */
   #divRespuesta > #envResp:hover {
     transform: scale(110%);
   }
 
-  /* line 524, ../sass/estilo.scss */
+  /* line 528, ../sass/estilo.scss */
   #victoria {
     top: 20vh;
     height: 70vh;
@@ -620,42 +626,42 @@ nav {
     border: 2px solid white;
     box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.789), inset 0 0 100px rgba(255, 255, 255, 0.354);
   }
-  /* line 532, ../sass/estilo.scss */
+  /* line 536, ../sass/estilo.scss */
   #victoria > h1 {
     font-size: 3vw;
     margin-top: 30px;
     margin-bottom: 30px;
     -webkit-text-stroke: 0.5px white;
   }
-  /* line 538, ../sass/estilo.scss */
+  /* line 542, ../sass/estilo.scss */
   #victoria > div {
     border-radius: 5px;
     width: 300px;
     height: 300px;
   }
 
-  /* line 545, ../sass/estilo.scss */
+  /* line 549, ../sass/estilo.scss */
   #secInfo {
     padding: 20px;
   }
-  /* line 547, ../sass/estilo.scss */
+  /* line 551, ../sass/estilo.scss */
   #secInfo > h1 {
     text-shadow: 0 0 10px black;
     letter-spacing: 5px;
     margin-bottom: 20px;
   }
-  /* line 553, ../sass/estilo.scss */
+  /* line 557, ../sass/estilo.scss */
   #secInfo > div {
     padding: 15px;
     text-shadow: 0 0 5px black;
     border: 1px solid white;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.279);
   }
-  /* line 558, ../sass/estilo.scss */
+  /* line 562, ../sass/estilo.scss */
   #secInfo > div > p {
     font-size: 20px;
   }
-  /* line 560, ../sass/estilo.scss */
+  /* line 564, ../sass/estilo.scss */
   #secInfo > div > p > img {
     width: 250px;
     margin: 20px;
@@ -671,18 +677,18 @@ nav {
 
 *****************************************************************************/
 @media screen and (max-width: 850px) {
-  /* line 579, ../sass/estilo.scss */
+  /* line 583, ../sass/estilo.scss */
   ::-webkit-scrollbar {
     width: 5px;
   }
 
-  /* line 583, ../sass/estilo.scss */
+  /* line 587, ../sass/estilo.scss */
   nav {
     margin-bottom: 10px;
     top: -30px;
   }
 
-  /* line 589, ../sass/estilo.scss */
+  /* line 593, ../sass/estilo.scss */
   .nav-item > .nav-link {
     font-size: 12px;
     margin-right: 10px;
@@ -691,13 +697,13 @@ nav {
     cursor: pointer;
   }
 
-  /* line 598, ../sass/estilo.scss */
+  /* line 602, ../sass/estilo.scss */
   .navbar-brand {
     text-shadow: 0 5px 10px rgba(0, 0, 0, 0.565);
     font-weight: bold;
   }
 
-  /* line 603, ../sass/estilo.scss */
+  /* line 607, ../sass/estilo.scss */
   .logonav {
     width: 50px;
     border: 2px solid black;
@@ -706,14 +712,14 @@ nav {
     padding: 5px;
   }
 
-  /* line 611, ../sass/estilo.scss */
+  /* line 615, ../sass/estilo.scss */
   #nombreUsuario {
     -webkit-text-stroke: 0.5px white;
     font-size: 15px;
     margin-right: 10px;
   }
 
-  /* line 617, ../sass/estilo.scss */
+  /* line 621, ../sass/estilo.scss */
   .contenedor {
     height: 85vh;
     width: 90vw;
@@ -722,11 +728,11 @@ nav {
     border: 1px solid white;
     box-shadow: 0 0 10px black;
   }
-  /* line 625, ../sass/estilo.scss */
+  /* line 629, ../sass/estilo.scss */
   .contenedor > form {
     padding: 15px;
   }
-  /* line 627, ../sass/estilo.scss */
+  /* line 631, ../sass/estilo.scss */
   .contenedor > form > #inpUsuario {
     box-shadow: inset 0 0 10px black;
     width: 90%;
@@ -734,7 +740,7 @@ nav {
     padding: 5px;
     margin: 10px;
   }
-  /* line 634, ../sass/estilo.scss */
+  /* line 638, ../sass/estilo.scss */
   .contenedor > form > #buscar {
     padding: 5px;
     margin-top: 20px;
@@ -743,23 +749,23 @@ nav {
     box-shadow: inset 0 0 10px black;
   }
 
-  /* line 644, ../sass/estilo.scss */
+  /* line 648, ../sass/estilo.scss */
   #insesion {
     padding: 10px;
     text-shadow: 0 0 5px black;
   }
-  /* line 647, ../sass/estilo.scss */
+  /* line 651, ../sass/estilo.scss */
   #insesion > h1 {
     font-size: 20px;
     margin-bottom: 20px;
   }
-  /* line 652, ../sass/estilo.scss */
+  /* line 656, ../sass/estilo.scss */
   #insesion > div > button {
     width: 60%;
     box-shadow: inset 0 0 10px black;
     transition: 0.3s;
   }
-  /* line 658, ../sass/estilo.scss */
+  /* line 662, ../sass/estilo.scss */
   #insesion > img {
     margin-top: 20px;
     box-shadow: 0 0 5px black, 0 0 15px black;
@@ -767,7 +773,7 @@ nav {
     padding: 10px;
   }
 
-  /* line 666, ../sass/estilo.scss */
+  /* line 670, ../sass/estilo.scss */
   #solicitud {
     top: 20%;
     width: 70%;
@@ -775,11 +781,11 @@ nav {
     border: 1px solid black;
     border-radius: 10px;
   }
-  /* line 672, ../sass/estilo.scss */
+  /* line 676, ../sass/estilo.scss */
   #solicitud > h1 {
     text-shadow: 0 0 7px black;
   }
-  /* line 675, ../sass/estilo.scss */
+  /* line 679, ../sass/estilo.scss */
   #solicitud > button {
     padding-left: 15px;
     padding-right: 15px;
@@ -789,7 +795,7 @@ nav {
   }
 
   /***************************** SECCION DEL JUEGO *********************************/
-  /* line 685, ../sass/estilo.scss */
+  /* line 689, ../sass/estilo.scss */
   .imgJuego {
     width: 50px;
     height: 50px;
@@ -797,7 +803,7 @@ nav {
     margin: 7px;
   }
 
-  /* line 692, ../sass/estilo.scss */
+  /* line 696, ../sass/estilo.scss */
   .titulo {
     font-size: 15px;
     text-shadow: 0 0 10px black;
@@ -805,7 +811,7 @@ nav {
     margin-bottom: 10px;
   }
 
-  /* line 699, ../sass/estilo.scss */
+  /* line 703, ../sass/estilo.scss */
   #imagenes {
     margin-bottom: 20px;
     height: 55vh;
@@ -814,11 +820,11 @@ nav {
   }
 
   /***************************************** SECCION DE PREGUNTAS Y RESPUESTAS ***********************************/
-  /* line 707, ../sass/estilo.scss */
+  /* line 711, ../sass/estilo.scss */
   #datos {
     margin-top: 10px;
   }
-  /* line 710, ../sass/estilo.scss */
+  /* line 714, ../sass/estilo.scss */
   #datos > #mipersonaje {
     width: 70px;
     height: 70px;
@@ -826,7 +832,7 @@ nav {
     border-radius: 10px;
     margin-right: 20px;
   }
-  /* line 718, ../sass/estilo.scss */
+  /* line 722, ../sass/estilo.scss */
   #datos > #aceptar,
   #datos #adivinar {
     font-size: 13px;
@@ -838,25 +844,25 @@ nav {
     border-radius: 8px;
     padding: 5px 10px 5px 10px;
   }
-  /* line 729, ../sass/estilo.scss */
+  /* line 733, ../sass/estilo.scss */
   #datos > #aceptar:hover,
   #datos #adivinar:hover {
     transform: scale(110%);
     border-color: black;
     box-shadow: 0 5px 15px black, 0 0px 0px black inset 0 0 10px black;
   }
-  /* line 736, ../sass/estilo.scss */
+  /* line 740, ../sass/estilo.scss */
   #datos > #aceptar {
     margin-left: 20px;
     border: 1px solid #1b3e4e;
   }
-  /* line 740, ../sass/estilo.scss */
+  /* line 744, ../sass/estilo.scss */
   #datos > #adivinar {
     margin-left: 10px;
     border: 1px solid #1b3e4e;
   }
 
-  /* line 746, ../sass/estilo.scss */
+  /* line 750, ../sass/estilo.scss */
   #textCambio {
     margin-top: 10px;
     font-size: 13px;
@@ -864,7 +870,7 @@ nav {
   }
 
   /***************************************************** SECCION DE PREGUNTAS ****************************************************/
-  /* line 753, ../sass/estilo.scss */
+  /* line 757, ../sass/estilo.scss */
   #divPregunta {
     margin-bottom: 20px;
     box-shadow: inset 0 0 5px black, 0 0 5px black;
@@ -872,15 +878,15 @@ nav {
     padding: 7px;
     padding-bottom: 15px;
   }
-  /* line 759, ../sass/estilo.scss */
+  /* line 763, ../sass/estilo.scss */
   #divPregunta > .labelPreg {
     width: 70%;
   }
-  /* line 761, ../sass/estilo.scss */
+  /* line 765, ../sass/estilo.scss */
   #divPregunta > .labelPreg > span {
     font-size: 1px;
   }
-  /* line 764, ../sass/estilo.scss */
+  /* line 768, ../sass/estilo.scss */
   #divPregunta > .labelPreg #pregunta {
     width: 100%;
     border-radius: 5px;
@@ -889,7 +895,7 @@ nav {
     font-size: 13px;
     box-shadow: 0 5px 10px black;
   }
-  /* line 774, ../sass/estilo.scss */
+  /* line 778, ../sass/estilo.scss */
   #divPregunta #envPreg {
     font-size: 10px;
     box-shadow: 0 0 5px black;
@@ -902,7 +908,7 @@ nav {
   }
 
   /***************************************************** SECCION DE RESPUESTA ****************************************************/
-  /* line 787, ../sass/estilo.scss */
+  /* line 791, ../sass/estilo.scss */
   #divRespuesta {
     margin-bottom: 20px;
     box-shadow: inset 0 0 7px black, 0 0 7px black;
@@ -910,26 +916,26 @@ nav {
     padding: 7px;
     padding-bottom: 15px;
   }
-  /* line 794, ../sass/estilo.scss */
+  /* line 798, ../sass/estilo.scss */
   #divRespuesta > .labelResp {
     width: 70%;
   }
-  /* line 796, ../sass/estilo.scss */
+  /* line 800, ../sass/estilo.scss */
   #divRespuesta > .labelResp > span {
     font-size: 14px;
   }
-  /* line 799, ../sass/estilo.scss */
+  /* line 803, ../sass/estilo.scss */
   #divRespuesta > .labelResp #respuesta {
     width: 100%;
     font-size: 10px;
     border-radius: 10px;
     margin-top: 15px;
   }
-  /* line 804, ../sass/estilo.scss */
+  /* line 808, ../sass/estilo.scss */
   #divRespuesta > .labelResp #respuesta > option {
     padding: 10px;
   }
-  /* line 809, ../sass/estilo.scss */
+  /* line 813, ../sass/estilo.scss */
   #divRespuesta > #envResp {
     border: 1px groove;
     border-radius: 10px;
@@ -938,7 +944,7 @@ nav {
     font-size: 10px;
   }
 
-  /* line 818, ../sass/estilo.scss */
+  /* line 822, ../sass/estilo.scss */
   #victoria {
     top: 15vh;
     height: 60vh;
@@ -948,41 +954,41 @@ nav {
     border: 1px solid white;
     box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.524), inset 0 0 50px rgba(255, 255, 255, 0.272);
   }
-  /* line 826, ../sass/estilo.scss */
+  /* line 830, ../sass/estilo.scss */
   #victoria > h1 {
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
     -webkit-text-stroke: 1px white;
   }
-  /* line 832, ../sass/estilo.scss */
+  /* line 836, ../sass/estilo.scss */
   #victoria > div {
     border-radius: 5px;
     width: 200px;
     height: 200px;
   }
 
-  /* line 839, ../sass/estilo.scss */
+  /* line 843, ../sass/estilo.scss */
   #secInfo {
     padding: 20px;
   }
-  /* line 841, ../sass/estilo.scss */
+  /* line 845, ../sass/estilo.scss */
   #secInfo > h1 {
     text-shadow: 0 0 10px black;
     margin-bottom: 15px;
   }
-  /* line 846, ../sass/estilo.scss */
+  /* line 850, ../sass/estilo.scss */
   #secInfo > div {
     padding: 15px;
     text-shadow: 0 0 5px black;
     border: 1px solid white;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.279);
   }
-  /* line 851, ../sass/estilo.scss */
+  /* line 855, ../sass/estilo.scss */
   #secInfo > div > p {
     font-size: 20px;
   }
-  /* line 853, ../sass/estilo.scss */
+  /* line 857, ../sass/estilo.scss */
   #secInfo > div > p > img {
     width: 130px;
     margin: 20px;

@@ -1,27 +1,27 @@
 const auth = firebase.auth();
 var adivinar = false;
 var temp;
+
 window.onload = () => {
     $("#info").click(cambiaPestaña);
     $("#juego").click(cambiaPestaña);
+    $("#pers").click(cambiaPestaña);
+
+    firebase.storage().ref().child("").listAll()
+        .then((result) => {
+            $("#verImagenes").empty();
+            result.items.forEach(element => {
+                firebase.storage().ref(element.name).getDownloadURL()
+                    .then((res) => {
+                        var img = $("<button class='imgJuego'> </button>");
+                        $(img).attr("style", "background-image: url('" + res + "')");
+                        $("#verImagenes").append(img);
+                    });
+            });
+        });
 }
 
-function cambiaPestaña() {
-    $("#salir").trigger("click");
-
-    $(".pestaña").addClass("ocultar")
-
-    switch (this.id) {
-        case "info":
-            $("#secInfo").removeClass("ocultar");
-            break;
-        case "juego":
-            $("#formulario").removeClass("ocultar");
-            break;
-    }
-}
-
-
+// COMPRUEBA LA EXISTENCIA DE USUARIOS 
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         $("#botones").append("<button class='btn btn-outline-danger' id='btnCerrarSession'>Cerrar sesion</button>");
@@ -29,12 +29,13 @@ firebase.auth().onAuthStateChanged((user) => {
         cerrarSesion(user);
         agregarJugador(user);
         muestraUsuarios(user);
-        cargarArchivos();
+
+        creaImagenes();
         // EVENTO DE BUSCAR JUGADOR
         $("#buscar").click((e) => {
             e.preventDefault();
 
-            // COMPROBACION DE LA LONGITUDA DEL VALUE DEL INPUT
+            // COMPROBACION DE LA LONGITUD DEL VALUE DEL INPUT
             var nombre = $("#inpUsuario").val();
             nombre = nombre.trim();
             if (user.displayName != nombre && nombre.length > 0) {
@@ -58,6 +59,7 @@ firebase.auth().onAuthStateChanged((user) => {
         iniciarSesion();
     }
 });
+
 
 const iniciarSesion = () => {
     $("#btnAcceder").click(async () => {
@@ -93,6 +95,37 @@ const cerrarSesion = (user) => {
     $(".nav-item").removeClass("ocultar")
     $("#insesion").addClass("ocultar");
 
+}
+
+
+function cambiaPestaña() {
+    resetVariables();
+    var pest = document.getElementsByClassName("pestanya");
+    for (let i = 0; i < pest.length; i++) {
+        console.log(pest[i].id + " --> " + pest[i].className);
+    }
+
+    $(".pestanya").addClass("ocultar")
+
+    switch (this.id) {
+        case "info":
+            console.log("aqui1");
+            $("#secInfo").removeClass("ocultar");
+            break;
+        case "juego":
+            console.log("aqui2");
+            $("#formulario").removeClass("ocultar");
+            break;
+        case "pers":
+            console.log("aqui3");
+            $("#personajes").removeClass("ocultar");
+            break;
+    }
+
+    var pest = document.getElementsByClassName("pestanya");
+    for (let i = 0; i < pest.length; i++) {
+        console.log(pest[i].id + " --> " + pest[i].className);
+    }
 }
 
 const muestraUsuarios = (user) => {
@@ -151,7 +184,7 @@ const agregarJugador = (user) => {
                                     })
                                 }
 
-                                cargarArchivos();
+                                creaImagenes();
                             })
 
                     })
@@ -200,7 +233,7 @@ const buscarUsuario = (user, nombre) => {
 
                 localStorage.setItem("numSala", numSala);
                 localStorage.setItem("numJugador", 0);
-                cargarArchivos();
+                creaImagenes();
             }
 
             setTimeout(() => {
@@ -213,16 +246,17 @@ const buscarUsuario = (user, nombre) => {
 }
 
 /*
-
-
-
+ 
+ 
+ 
 ***************************************************************  SCRIPT DE PARTIDA **********************************************
-
-
-
+ 
+ 
+ 
 */
 
-const cargarArchivos = () => {
+
+const creaImagenes = () => {
     firebase.firestore().collection("salas").doc("sala-" + localStorage.getItem("numSala")).onSnapshot((result) => {
         var cond = false;
         if (result.exists && result.data().jugadores.length > 1) {
@@ -257,11 +291,10 @@ const cargarArchivos = () => {
                                 await marcarRojo(conexion);
                             })
 
-
                     });
 
-
                 })
+
 
             if (localStorage.getItem("url")) {
                 $("#mipersonaje").css("background-image", localStorage.getItem("url"));
@@ -464,7 +497,7 @@ const cargarArchivos = () => {
         }
         // SI NO HAY UNA PARTIDA ACTIVA
         else {
-            $("#formulario").removeClass("ocultar");
+            // $("#formulario").removeClass("ocultar");
             $("#secJuego").find("*").addBack().addClass("ocultar");
             $("#imagenes").empty();
         }
@@ -576,5 +609,6 @@ function resetVariables() {
     localStorage.clear();
     adivinar = false;
     $("#adivinar").removeClass("clikado");
+
 }
 
