@@ -1,6 +1,7 @@
 const auth = firebase.auth();
 var adivinar = false;
 var temp;
+var miNombre;
 
 window.onload = () => {
     $("#info").click(cambiaPestaña);
@@ -24,6 +25,11 @@ window.onload = () => {
 // COMPRUEBA LA EXISTENCIA DE USUARIOS 
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
+        miNombre = user.displayName;
+        if (!sessionStorage.getItem("numSala")) {
+            resetVariables();
+        }
+
         $("#botones").append("<button class='btn btn-outline-danger' id='btnCerrarSession'>Cerrar sesion</button>");
         $("#nombreUsuario").text("Bienvenido " + user.displayName.split(" ")[0]);
         cerrarSesion(user);
@@ -38,7 +44,7 @@ firebase.auth().onAuthStateChanged((user) => {
             // COMPROBACION DE LA LONGITUD DEL VALUE DEL INPUT
             var nombre = $("#inpUsuario").val();
             nombre = nombre.trim();
-            if (user.displayName != nombre && nombre.length > 0) {
+            if (miNombre != nombre && nombre.length > 0) {
                 buscarUsuario(user, nombre);
             }
         })
@@ -100,32 +106,20 @@ const cerrarSesion = (user) => {
 
 function cambiaPestaña() {
     resetVariables();
-    var pest = document.getElementsByClassName("pestanya");
-    for (let i = 0; i < pest.length; i++) {
-        console.log(pest[i].id + " --> " + pest[i].className);
-    }
-
     $(".pestanya").addClass("ocultar")
 
     switch (this.id) {
         case "info":
-            console.log("aqui1");
             $("#secInfo").removeClass("ocultar");
             break;
         case "juego":
-            console.log("aqui2");
             $("#formulario").removeClass("ocultar");
             break;
         case "pers":
-            console.log("aqui3");
             $("#personajes").removeClass("ocultar");
             break;
     }
 
-    var pest = document.getElementsByClassName("pestanya");
-    for (let i = 0; i < pest.length; i++) {
-        console.log(pest[i].id + " --> " + pest[i].className);
-    }
 }
 
 const muestraUsuarios = (user) => {
@@ -149,7 +143,7 @@ const agregarJugador = (user) => {
     })
 
     coleccion.doc(user.displayName).onSnapshot((result) => {
-        if (result.exists && result.data().solicitud != undefined && !localStorage.getItem("numSala")) {
+        if (result.exists && result.data().solicitud != undefined && !sessionStorage.getItem("numSala")) {
 
             /*************************************** MOSTRAMOS LA SOLICITUD *************************************************************/
             // BUSCAMOS EL NOMBRE DEL USUARIO
@@ -175,8 +169,8 @@ const agregarJugador = (user) => {
                                     arrayJugadores = array.data().jugadores;
                                 }
                                 arrayJugadores.push(user.displayName);
-                                localStorage.setItem("numSala", sala);
-                                localStorage.setItem("numJugador", 1);
+                                sessionStorage.setItem("numSala", sala);
+                                sessionStorage.setItem("numJugador", 1);
                                 if (array.exists) {
 
                                     colecSalas.doc("sala-" + sala).update({
@@ -206,7 +200,7 @@ const agregarJugador = (user) => {
 
 const buscarUsuario = (user, nombre) => {
 
-    if (localStorage.getItem("numSala")) {
+    if (sessionStorage.getItem("numSala")) {
         resetVariables();
     }
 
@@ -231,8 +225,8 @@ const buscarUsuario = (user, nombre) => {
                     turno: 0
                 })
 
-                localStorage.setItem("numSala", numSala);
-                localStorage.setItem("numJugador", 0);
+                sessionStorage.setItem("numSala", numSala);
+                sessionStorage.setItem("numJugador", 0);
                 creaImagenes();
             }
 
@@ -257,7 +251,7 @@ const buscarUsuario = (user, nombre) => {
 
 
 const creaImagenes = () => {
-    firebase.firestore().collection("salas").doc("sala-" + localStorage.getItem("numSala")).onSnapshot((result) => {
+    firebase.firestore().collection("salas").doc("sala-" + sessionStorage.getItem("numSala")).onSnapshot((result) => {
         var cond = false;
         if (result.exists && result.data().jugadores.length > 1) {
             cond = true;
@@ -276,7 +270,7 @@ const creaImagenes = () => {
             firebase.storage().ref().child("").listAll()
                 .then(async (result) => {
                     $("#imagenes").empty();
-                    var conexion = firebase.firestore().collection("salas").doc("jugadas-" + localStorage.getItem("numSala"))
+                    var conexion = firebase.firestore().collection("salas").doc("jugadas-" + sessionStorage.getItem("numSala"))
                         .get();
 
                     result.items.forEach(element => {
@@ -296,13 +290,13 @@ const creaImagenes = () => {
                 })
 
 
-            if (localStorage.getItem("url")) {
-                $("#mipersonaje").css("background-image", localStorage.getItem("url"));
+            if (sessionStorage.getItem("url")) {
+                $("#mipersonaje").css("background-image", sessionStorage.getItem("url"));
             }
 
             // EVENTO  QUE ESCUCHA SI SE HA CAMBIADO EL TURNO DEL JUGADOR
 
-            var jugada = firebase.firestore().collection("salas").doc("jugadas-" + localStorage.getItem("numSala"));
+            var jugada = firebase.firestore().collection("salas").doc("jugadas-" + sessionStorage.getItem("numSala"));
 
             jugada.onSnapshot((result) => {
                 if (result.exists) {
@@ -320,7 +314,7 @@ const creaImagenes = () => {
                             $("#pregunta").val("");
 
                             // SI ES MI TURNO 
-                            if (result.data().turno == localStorage.getItem("numJugador")) {
+                            if (result.data().turno == sessionStorage.getItem("numJugador")) {
                                 $("#turno").text("ES TU TURNO");
                                 $("#aceptar").removeClass("ocultar")
                                 $("#adivinar").removeClass("ocultar")
@@ -352,7 +346,7 @@ const creaImagenes = () => {
                             $("#secJuego").addClass("ocultar")
 
                             $("#victoria").removeClass("ocultar");
-                            firebase.firestore().collection("salas").doc("sala-" + localStorage.getItem("numSala"))
+                            firebase.firestore().collection("salas").doc("sala-" + sessionStorage.getItem("numSala"))
                                 .get().then((nombre) => {
                                     $("#titFin").text("LA VICTORIA ES PARA  " + nombre.data().jugadores[result.data().victoria]);
 
@@ -380,7 +374,7 @@ const creaImagenes = () => {
             $("#aceptar").click((e) => {
                 e.preventDefault();
 
-                var jugada = firebase.firestore().collection("salas").doc("jugadas-" + localStorage.getItem("numSala"))
+                var jugada = firebase.firestore().collection("salas").doc("jugadas-" + sessionStorage.getItem("numSala"))
                 jugada.update({
                     respuesta: firebase.firestore.FieldValue.delete(),
                     pregunta: firebase.firestore.FieldValue.delete()
@@ -392,19 +386,19 @@ const creaImagenes = () => {
                         // CONDICION DE ESTABLECER LOS PERSONAJES
                         if ($(".seleccionado").length > 0 && result.data().miPersonaje.includes("")) {
                             var array = result.data().miPersonaje;
-                            array[localStorage.getItem("numJugador")] = $(".seleccionado").attr("id");
+                            array[sessionStorage.getItem("numJugador")] = $(".seleccionado").attr("id");
                             jugada.update({
                                 miPersonaje: array
                             })
 
-                            localStorage.setItem("url", $(".seleccionado").css("background-image"))
+                            sessionStorage.setItem("url", $(".seleccionado").css("background-image"))
 
                             $(".seleccionado").removeClass("seleccionado");
                         }
 
                         // CONDICION DE DESCARTAR LOS PERSONAJES
                         else if (!result.data().miPersonaje.includes("")) {
-                            if (result.data().turno == localStorage.getItem("numJugador")) {
+                            if (result.data().turno == sessionStorage.getItem("numJugador")) {
                                 var quitados = document.getElementsByClassName("quitado")
                                 var array = "";
                                 var quitadosPers = result.data().quitadosPers;
@@ -412,7 +406,7 @@ const creaImagenes = () => {
                                     array += quitados[i].id + "-";
                                 }
 
-                                quitadosPers[localStorage.getItem("numJugador")] = array;
+                                quitadosPers[sessionStorage.getItem("numJugador")] = array;
                                 var turno = result.data().turno;
                                 if (turno == 0) {
                                     turno = 1
@@ -440,7 +434,7 @@ const creaImagenes = () => {
 
             $("#adivinar").click((e) => {
 
-                firebase.firestore().collection("salas").doc("jugadas-" + localStorage.getItem("numSala"))
+                firebase.firestore().collection("salas").doc("jugadas-" + sessionStorage.getItem("numSala"))
                     .get().then((result) => {
                         if (!result.data().miPersonaje.includes("")) {
                             if (adivinar) {
@@ -467,7 +461,7 @@ const creaImagenes = () => {
                     $("#divPregunta").addClass("ocultar");
 
 
-                    var jugada = firebase.firestore().collection("salas").doc("jugadas-" + localStorage.getItem("numSala"))
+                    var jugada = firebase.firestore().collection("salas").doc("jugadas-" + sessionStorage.getItem("numSala"))
                     jugada.update({
                         pregunta: $("#pregunta").val()
                     })
@@ -486,7 +480,7 @@ const creaImagenes = () => {
                 $("#textCambio").text("Espera al jugador...");
                 $("#divRespuesta").addClass("ocultar");
 
-                var jugada = firebase.firestore().collection("salas").doc("jugadas-" + localStorage.getItem("numSala"))
+                var jugada = firebase.firestore().collection("salas").doc("jugadas-" + sessionStorage.getItem("numSala"))
                 jugada.update({
                     respuesta: $("#respuesta").val()
                 })
@@ -513,7 +507,7 @@ const creaImagenes = () => {
 function marcarRojo(conexion) {
     conexion.then((result) => {
         if (result.exists) {
-            var array = result.data().quitadosPers[localStorage.getItem("numJugador")];
+            var array = result.data().quitadosPers[sessionStorage.getItem("numJugador")];
             if (array != undefined && array.length > 0) {
                 array = array.split("-");
 
@@ -531,7 +525,7 @@ function marcarRojo(conexion) {
 const comprobarAdivinado = (jugada) => {
     jugada.get().then((result) => {
         var vict = 0;
-        if (localStorage.getItem("numJugador") == 1) {
+        if (sessionStorage.getItem("numJugador") == 1) {
             if ($(".adivinado").attr("id") == result.data().miPersonaje[0]) {
                 vict = 1;
             }
@@ -555,7 +549,7 @@ const comprobarAdivinado = (jugada) => {
 
 
 function marcarImagen() {
-    var jugadas = firebase.firestore().collection("salas").doc("jugadas-" + localStorage.getItem("numSala"));
+    var jugadas = firebase.firestore().collection("salas").doc("jugadas-" + sessionStorage.getItem("numSala"));
 
     jugadas.get()
         .then((result) => {
@@ -570,7 +564,7 @@ function marcarImagen() {
 
                 // SI AMBOS ESTAN MARCADOS Y NO SE HA SELECCIONADO EL PERSONAJE 
                 if (!cond) {
-                    if (result.data().miPersonaje[localStorage.getItem("numJugador")] == "") {
+                    if (result.data().miPersonaje[sessionStorage.getItem("numJugador")] == "") {
 
                         var array = result.data().miPersonaje;
 
@@ -579,7 +573,7 @@ function marcarImagen() {
 
                         // SACAMOS LA URL PARA PONERLA EN EL ESPACIO DE MIPERSONAJE
                         $("#mipersonaje").css("background-image", $(this).css("background-image"));
-                        array[localStorage.getItem("numJugador")] = $(this).attr("id");
+                        array[sessionStorage.getItem("numJugador")] = $(this).attr("id");
                     }
 
                 }
@@ -600,15 +594,20 @@ function marcarImagen() {
 
 
 function resetVariables() {
-    if (localStorage.getItem("numSala")) {
-        firebase.firestore().collection("salas").doc("sala-" + localStorage.getItem("numSala")).delete();
-        firebase.firestore().collection("salas").doc("jugadas-" + localStorage.getItem("numSala")).delete();
-    }
+    firebase.firestore().collection("salas").where("jugadores", "array-contains", miNombre).get().then((result) => {
+        result.forEach(element => {
+            firebase.firestore().collection("salas").doc("jugadas" + element.id.split("-")[1]).delete()
+            firebase.firestore().collection("salas").doc(element.id).delete();
+        });
+    })
+
     $("#mipersonaje").css("background-image", "");
     $("textCambio").text("");
-    localStorage.clear();
+    sessionStorage.clear();
     adivinar = false;
     $("#adivinar").removeClass("clikado");
+    $(".pestanya").addClass("ocultar")
+    $("#formulario").removeClass("ocultar")
 
 }
 
